@@ -373,3 +373,4 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 @media (max-width:374px){.ticket__m .cp{font-size:100px}.back .off{font-size:41px}}
 .fv__note{background:#fff0f4}
 @media (max-width:600px){.note{letter-spacing:0;word-break:auto-phrase}}
+.offers .g.is-live small{background:var(--hot);color:#fff}

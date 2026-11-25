@@ -210,7 +210,7 @@
     $$('[data-gcd]').forEach(function (c) {
       c.hidden = !g;
       if (!g) return;
-      c.querySelector('.gcd__l').textContent = live ? 'Yunthガチャ 22:00まで あと' : 'ガチャ ' + g.m + '(' + g.w + ') 20:00まで';
+      c.querySelector('.gcd__l').textContent = live ? 'ガチャ 22:00まで あと' : 'ガチャ ' + g.m + '(' + g.w + ') 20:00まで';
       c.querySelector('.gcd__n').innerHTML = html;
     });
     $$('[data-offer]').forEach(function (a) {
