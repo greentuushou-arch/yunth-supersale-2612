@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -40,14 +40,12 @@
     <img class="fv__img" src="images/fv.webp?v=2" width="1400" height="2100" alt="Rakutenスーパー SALE 抽選で各日500名様限定 12/3・4・5・10 20:00-22:00 Yunthガチャ" fetchpriority="high">
     <a class="fv__p fv__p--l" href="#serum">
       <strong>美容液4種</strong>
-      <span class="off"><b>20</b><span class="off__u"><i class="p">%</i><i class="o">OFF</i></span></span>
-      <span class="q">クーポン</span>
+      <span class="cp"><b>20</b><span class="cp__r"><i class="u">%OFF</i><i class="k">クーポン</i></span></span>
       <span class="d">12/3 10:00〜12/11 9:59</span>
     </a>
     <a class="fv__p fv__p--r" href="#skin">
       <strong>スキンケア4商品</strong>
-      <span class="off"><b>30</b><span class="off__u"><i class="p">%</i><i class="o">OFF</i></span></span>
-      <span class="q">クーポン</span>
+      <span class="cp"><b>30</b><span class="cp__r"><i class="u">%OFF</i><i class="k">クーポン</i></span></span>
       <span class="d">12/3 10:00〜12/11 9:59</span>
     </a>
   </section>
@@ -70,13 +68,15 @@
     <p class="term"><span>12/2<small>(水)</small> 10:00〜23:59</span></p>
     <p class="state" data-state="pdrn"></p>
     <div class="pdrn__img"><img src="images/serum-pdrn.webp" width="720" height="720" alt="生PDRN美容液" loading="lazy"></div>
-    <div class="duo">
-      <div><span class="off"><b>20</b><span class="off__u"><i class="p">%</i><i class="o">OFF</i></span></span><strong>クーポン</strong></div>
-      <span class="pl">＋</span>
-      <div><span class="pt"><b>10</b><i>倍</i></span><strong>ポイント</strong></div>
+    <div class="ticket">
+      <p class="ticket__m"><span class="cp"><b>20</b><span class="cp__r"><i class="u">%OFF</i><i class="k">クーポン</i></span></span></p>
+      <a class="btn btn--gold" data-link="pdrnCoupon" href="#pdrn">20%OFFクーポン獲得</a>
+    </div>
+    <div class="p10">
+      <p class="p10__l">さらに</p>
+      <p class="p10__m">ポイント<span class="pt"><b>10</b><i>倍</i></span></p>
     </div>
     <p class="calc"><span class="num">3,960</span>円(税込)<strong>クーポン利用で<br><b>3,168</b><em>円</em></strong></p>
-    <a class="btn btn--gold" data-link="pdrnCoupon" href="#pdrn">20%OFFクーポン獲得</a>
     <a class="btn btn--hot" data-item="yb-126-001" href="#">商品ページへ</a>
     <p class="note">※2 サーモン抽出物：DNA-Na(整肌)</p>
   </section>
@@ -103,8 +103,7 @@
     <p class="term"><span>12/3<small>(木)</small> 10:00</span><span>〜12/11<small>(金)</small> 9:59</span></p>
     <p class="state" data-state="serum"></p>
     <div class="ticket">
-      <p class="ticket__pre">VC・VA・AZ・PDRN&#8288;<sup>※2</sup></p>
-      <p class="ticket__m"><span class="off"><b>20</b><span class="off__u"><i class="p">%</i><i class="o">OFF</i></span></span><span class="q">クーポン</span></p>
+      <p class="ticket__m"><span class="cp"><b>20</b><span class="cp__r"><i class="u">%OFF</i><i class="k">クーポン</i></span></span></p>
       <a class="btn btn--gold" data-link="serumCoupon" href="#serum">20%OFFクーポン獲得</a>
     </div>
     <div class="p10">
@@ -123,8 +122,7 @@
     <p class="term"><span>12/3<small>(木)</small> 10:00</span><span>〜12/11<small>(金)</small> 9:59</span></p>
     <p class="state" data-state="skin"></p>
     <div class="ticket">
-      <p class="ticket__pre">洗う・整える・守る</p>
-      <p class="ticket__m"><span class="off"><b>30</b><span class="off__u"><i class="p">%</i><i class="o">OFF</i></span></span><span class="q">クーポン</span></p>
+      <p class="ticket__m"><span class="cp"><b>30</b><span class="cp__r"><i class="u">%OFF</i><i class="k">クーポン</i></span></span></p>
       <a class="btn btn--gold" data-link="skinCoupon" href="#skin">30%OFFクーポン獲得</a>
     </div>
     <div class="rows" data-skins></div>
@@ -144,11 +142,10 @@
     </div>
     <p class="boost__cap">Deep Boost に<br>生AZ美容液1箱をセット</p>
     <div class="ticket">
-      <p class="ticket__pre">Deep Boost 特別セット</p>
-      <p class="ticket__m"><span class="off"><b>32</b><span class="off__u"><i class="p">%</i><i class="o">OFF</i></span></span><span class="q">クーポン</span></p>
-      <p class="calc"><span class="num">33,000</span>円(税込)<strong>クーポン利用で<br><b>22,440</b><em>円</em></strong></p>
+      <p class="ticket__m"><span class="cp"><b>32</b><span class="cp__r"><i class="u">%OFF</i><i class="k">クーポン</i></span></span></p>
       <a class="btn btn--gold" data-link="boostCoupon" href="#boost">32%OFFクーポン獲得</a>
     </div>
+    <p class="calc"><span class="num">33,000</span>円(税込)<strong>クーポン利用で<br><b>22,440</b><em>円</em></strong></p>
     <a class="btn btn--hot" data-item="yth-260" href="#">商品ページへ</a>
     <p class="note">本体はピンク・ホワイトの2色</p>
   </section>

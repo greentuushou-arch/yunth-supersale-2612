@@ -27,7 +27,7 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 
 /* ---- 割引表記の共通部品 ---- */
 .off{display:inline-flex;align-items:center;line-height:1;white-space:nowrap}
-.ticket__m .off,.duo .off,.duo .pt,.deal__m .off{background:linear-gradient(170deg,#e4668a,#c5345f 46%,#a8254c);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.04em .02em}
+.deal__m .off{background:linear-gradient(170deg,#e4668a,#c5345f 46%,#a8254c);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.04em .02em}
 .off>b{font-family:var(--num);font-weight:600;font-size:1em;line-height:.8;letter-spacing:-.02em}
 .off__u{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:.04em;margin-left:.05em}
 .off__u i{display:block;line-height:.9}
@@ -70,11 +70,9 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .fv__img{width:100%}
 .fv__p{position:absolute;top:71.6%;height:23%;width:46.6%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;text-align:center;color:var(--hot);line-height:1.2}
 .fv__p--l{left:2.3%}.fv__p--r{left:51.6%}
-.fv__p .off+.q{margin-top:0}
 .fv__p strong{font-weight:700;font-size:5.2cqw;letter-spacing:.04em;color:var(--ink);white-space:nowrap}
-.fv__p .off{font-size:15.4cqw;margin:1.6cqw 0 1.2cqw}
-.fv__p .q{font-weight:700;font-size:5.8cqw;line-height:1.15;letter-spacing:.06em}
-.fv__p .d{margin-top:.9cqw;font-family:var(--num);font-weight:500;font-size:max(14px,3.75cqw);letter-spacing:0;color:var(--ink);white-space:nowrap}
+.fv__p .cp{font-size:16.8cqw;margin:4cqw 0 3.6cqw}
+.fv__p .d{font-family:var(--num);font-weight:500;font-size:max(14px,3.75cqw);letter-spacing:0;color:var(--ink);white-space:nowrap}
 .fv__note{padding:12px 20px;background:#fffdfa;color:var(--ink2);font-size:14px;line-height:1.65;letter-spacing:.02em;text-align:center;word-break:auto-phrase}
 
 /* ---- 早見表 ---- */
@@ -100,12 +98,6 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .pdrn{background:linear-gradient(180deg,#f7f7f8,#e6e9ed 60%,#f5f5f6)}
 .pdrn__img{margin:24px -28px 0;background:#8c8d90}
 .pdrn__img img{width:100%}
-.duo{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:26px;color:var(--hot)}
-.duo>div{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:12px}
-.duo{align-items:stretch}.duo .pl{align-self:center}
-.duo strong{font-weight:700;font-size:28px;line-height:1;letter-spacing:.04em}
-.duo .off,.duo .pt{font-size:112px}
-.duo .pl{font-family:var(--num);font-weight:400;font-size:52px;line-height:1;color:var(--ink)}
 .calc{margin-top:22px;font-size:17px;line-height:1.5}
 .calc .num{font-weight:500;font-size:24px}
 .calc strong{display:block;font-weight:700;font-size:20px}
@@ -148,12 +140,19 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .th--mask img{clip-path:inset(21.5% 0 0 0);transform:translateY(-10%)}
 
 /* ---- クーポン券 ---- */
-.ticket{position:relative;max-width:540px;margin:24px auto 0;padding:0 18px 32px;overflow:hidden;background:linear-gradient(180deg,#fff,#fff8f4);color:var(--hot);border-radius:6px;box-shadow:0 0 0 1px var(--gold),0 16px 36px -20px #a8506b66}
-.ticket__pre{margin:0 -18px 26px;padding:11px 12px;background:var(--rose-grad);border-bottom:4px solid #dcb873;color:#fff;font-weight:700;font-size:24px;letter-spacing:.06em;line-height:1.4}
-.ticket__m{display:flex;align-items:center;justify-content:center;gap:14px;margin:14px 0 4px}
-.ticket__m .off{font-size:136px}
-.ticket__m .q{font-weight:700;font-size:48px;line-height:1.1;letter-spacing:.02em}
-.ticket .btn{margin-top:20px}
+.ticket{position:relative;max-width:540px;margin:24px auto 0;padding:50px 24px 34px;background:var(--rose-grad);color:#fff;border-radius:6px;
+  -webkit-mask:radial-gradient(circle var(--n,15px) at 0 44%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle var(--n,15px) at 100% 44%,#0000 97%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle var(--n,15px) at 0 44%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle var(--n,15px) at 100% 44%,#0000 97%,#000) right/51% 100% no-repeat}
+.ticket__m{display:flex;justify-content:center}
+.ticket__m .cp{font-size:166px}
+/* クーポンの文字組み: 数字の高さ(.7em)に「%OFF」「クーポン」を上下でそろえる */
+.cp{display:inline-flex;align-items:stretch;gap:.02em;height:.7em;line-height:1;white-space:nowrap}
+.cp>b{font-family:var(--num);font-weight:600;font-size:1em;line-height:.7;letter-spacing:-.01em}
+.cp__r{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start}
+.cp__r i{display:block}
+.cp__r .u{font-family:var(--num);font-weight:500;font-size:.48em;line-height:.7;letter-spacing:0}
+.cp__r .k{font-family:var(--sans);font-weight:500;font-size:.302em;line-height:.8;letter-spacing:.05em;margin:0 -.05em .02em 0}
+.ticket .btn{max-width:440px;margin-top:38px;border-radius:999px;box-shadow:none}
 .p10{margin-top:26px;padding:20px 14px;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);color:var(--hot)}
 .p10__l{font-weight:700;font-size:20px;color:var(--ink);line-height:1.5}
 .p10__m{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-top:8px;font-weight:700;font-size:40px;line-height:1}
@@ -189,7 +188,6 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .boost__d img{height:380px;width:auto}
 .boost__v .pl{font-family:var(--num);font-weight:300;font-size:72px;line-height:1}
 .boost__cap{margin-top:20px;font-weight:700;font-size:25px;line-height:1.5}
-.boost .calc{color:var(--ink);margin-top:14px;padding-top:14px;border-top:1px dashed var(--gold)}
 
 /* ---- DEAL ---- */
 .deal__m{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;color:var(--hot)}
@@ -281,7 +279,6 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
   .cal__row p span{word-break:auto-phrase}
 .cal__row p{font-size:17px}.cal__row p small{font-size:15px}
   .pdrn__img{margin:22px -18px 0}
-  .duo{gap:6px}.duo .off,.duo .pt{font-size:75px}.duo strong{font-size:22px}.duo .pl{font-size:36px}
   .calc strong b{font-size:56px}
   .gacha__ttl{font-size:44px}.gacha__box{width:120px}.gacha__ship{font-size:17px}
   .gacha__rule{font-size:20px}.gacha__rule b{font-size:32px}
@@ -293,9 +290,9 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
   .day__prize{font-size:22px;letter-spacing:.02em}
   .tgt a{width:calc((100% - 20px)/3);font-size:14px}
   .tgt--1 a{width:170px;font-size:17px}
-  .ticket{padding:0 12px 26px}.ticket__pre{margin:0 -12px 24px}
-  .ticket__pre{font-size:21px}
-  .ticket__m{flex-direction:column;gap:14px}.ticket__m .off{font-size:136px}.ticket__m .q{font-size:44px}
+  .ticket{padding:42px 12px 28px;--n:11px}
+  .ticket__m .cp{font-size:110px}
+  .ticket .btn{margin:30px 8px 0;font-size:20px}
   .p10__m{font-size:30px}.p10__m .pt{font-size:80px}.p10__d{font-size:27px}
   .serums,.deals{gap:30px 10px}
   .item__n{font-size:17px}
@@ -312,8 +309,7 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 @media (max-width:374px){
   .gacha__500{font-size:22px}.gacha__500 b{font-size:80px}
   .gacha__ttl{font-size:44px}
-  .ticket__m .off{font-size:124px}
-  .duo .off,.duo .pt{font-size:72px}
+  .ticket__m .cp{font-size:104px}
   .gcd__n{font-size:36px}
   .deal__m .off{font-size:108px}
   .back .off{font-size:44px}
