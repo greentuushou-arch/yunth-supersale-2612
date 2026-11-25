@@ -54,10 +54,10 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .state{display:inline-block;margin-top:14px;padding:5px 24px;border:1px solid var(--hot);font-weight:700;font-size:20px;line-height:1.5;letter-spacing:.06em;color:var(--hot);white-space:nowrap}
 .state.is-live{background:var(--hot);color:#fff}
 .state.is-end{border-color:#b9a0aa;color:#8a6d79;background:transparent}
-.btn{display:block;max-width:440px;margin:22px auto 0;padding:17px 14px;border-radius:4px;text-decoration:none;font-weight:700;font-size:21px;line-height:1.4;letter-spacing:.06em;text-align:center;transition:transform .2s}
+.btn{display:block;max-width:440px;margin:22px auto 0;padding:17px 14px;border-radius:999px;text-decoration:none;font-weight:700;font-size:21px;line-height:1.4;letter-spacing:.06em;text-align:center;transition:transform .2s}
 .btn:hover{transform:translateY(-2px)}
-.btn--gold{background:linear-gradient(100deg,#d3ae6a,#f8eac4 48%,#d3ae6a);color:var(--wine);box-shadow:0 3px 0 #a67f39}
-.btn--hot{background:var(--hot);color:#fff;box-shadow:0 3px 0 var(--hot-d)}
+.btn--gold{background:linear-gradient(100deg,#d3ae6a,#f8eac4 48%,#d3ae6a);color:var(--wine)}
+.btn--hot{background:var(--hot);color:#fff}
 .btn--s{width:100%;margin-top:12px;padding:9px 8px;font-size:17px;box-shadow:none;background:#fff;border:1px solid var(--hot);color:var(--hot)}
 
 /* ---- ロゴ ---- */
@@ -141,8 +141,8 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 
 /* ---- クーポン券 ---- */
 .ticket{position:relative;max-width:540px;margin:24px auto 0;padding:50px 24px 34px;background:var(--rose-grad);color:#fff;border-radius:6px;
-  -webkit-mask:radial-gradient(circle var(--n,15px) at 0 44%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle var(--n,15px) at 100% 44%,#0000 97%,#000) right/51% 100% no-repeat;
-  mask:radial-gradient(circle var(--n,15px) at 0 44%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle var(--n,15px) at 100% 44%,#0000 97%,#000) right/51% 100% no-repeat}
+  --m:radial-gradient(circle var(--n,15px) at 0 44%,#0000 97%,#000),radial-gradient(circle var(--n,15px) at 100% 44%,#0000 97%,#000);
+  -webkit-mask:var(--m);mask:var(--m);-webkit-mask-composite:source-in;mask-composite:intersect}
 .ticket__m{display:flex;justify-content:center}
 .ticket__m .cp{font-size:166px}
 /* クーポンの文字組み: 数字の高さ(.7em)に「%OFF」「クーポン」を上下でそろえる */
