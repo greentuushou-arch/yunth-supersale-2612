@@ -124,9 +124,8 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .dayslide{position:relative;margin:0 -24px}
 .days{--w:440px;position:relative;display:flex;gap:16px;padding:24px calc(50% - var(--w)/2) 30px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .days::-webkit-scrollbar{display:none}
-.day{position:relative;flex:0 0 var(--w);scroll-snap-align:center;color:var(--ink);transition:opacity .3s,transform .3s}
-.day:not(.is-on){opacity:.62;transform:scale(.96)}
-.dayarrow{position:absolute;top:50%;z-index:2;width:52px;height:52px;margin-top:-26px;border:0;border-radius:50%;background:var(--gold-grad);box-shadow:0 4px 14px #7a123a66;cursor:pointer}
+.day{position:relative;flex:0 0 var(--w);scroll-snap-align:center;color:var(--ink)}
+.dayarrow{position:absolute;top:50%;z-index:2;width:52px;height:52px;margin-top:-26px;border:0;border-radius:50%;background:var(--gold-grad);cursor:pointer}
 .dayarrow::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:13px;border-top:3px solid var(--wine);border-right:3px solid var(--wine)}
 .dayarrow--p{left:34px}.dayarrow--p::after{transform:translate(-30%,-50%) rotate(-135deg)}
 .dayarrow--n{right:34px}.dayarrow--n::after{transform:translate(-70%,-50%) rotate(45deg)}
@@ -231,7 +230,7 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .rail--l{left:max(12px,calc(50% - var(--col)/2 - var(--rail) - 34px))}
 .rail--r{right:max(12px,calc(50% - var(--col)/2 - var(--rail) - 34px));text-align:center}
 .rbox{border-radius:14px;border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(160deg,#fff0c4,#d9a94f 30%,#ffe9b4 55%,#c9953c) border-box;box-shadow:0 10px 34px -8px #b5264f66;overflow:hidden}
-.rbox__head{padding:18px 12px 14px;background:#c8345f url(images/tex-a.webp) center 30%/150% auto;color:#fff;text-align:center}
+.rbox__head{padding:18px 12px 14px;background:#c8345f url(images/tex-a.webp?v=2) center 30%/150% auto;color:#fff;text-align:center}
 .rail__logo{width:96px;margin:0 auto}
 .rail__ttl{margin-top:10px;font-family:var(--num);font-weight:600;font-size:27px;line-height:1.1}
 .rail__ttl b{display:block;font-weight:700;font-size:80px;line-height:.95;letter-spacing:.01em}
@@ -353,8 +352,8 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 @media (min-width:601px){.calsec__h button{cursor:default;pointer-events:none}}
 
 /* ---- 中央の地: FVの赤ピンクの夜空(a) / きらめくピンクの雪(b) ---- */
-.sec--a{background:#c8345f url(images/tex-a.webp) center top/100% auto;color:#fff}
-.sec--b{background:#ffcad8 url(images/tex-b.webp) center top/100% auto}
+.sec--a{background:#c8345f url(images/tex-a.webp?v=2) center top/100% auto;color:#fff}
+.sec--b{background:#ffcad8 url(images/tex-b.webp?v=2) center top/100% auto}
 .sec--a,.sec--b{padding-left:24px;padding-right:24px}
 .sec--a>.note{color:#ffe6ee}
 .sec--a>.state{border-color:#fff;color:#fff}
@@ -365,7 +364,7 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .sec--a>.gcd .gcd__l{color:#ffe9b4}
 .sec--a>.deal__m{color:#fff}
 /* FV下の2枠と同じ金フチのパネル */
-.panel,.day{border:4px solid transparent;border-radius:30px;background:linear-gradient(180deg,#fff,#fff1f4 70%,#ffe9ee) padding-box,linear-gradient(150deg,#fff3cf,#e0ad54 28%,#fff0c6 52%,#cf9a40 78%,#ffe9b4) border-box;box-shadow:0 0 26px #ffd5e0cc;color:var(--ink)}
+.panel,.day{border:4px solid transparent;border-radius:30px;background:linear-gradient(180deg,#fff,#fff1f4 70%,#ffe9ee) padding-box,linear-gradient(150deg,#fff3cf,#e0ad54 28%,#fff0c6 52%,#cf9a40 78%,#ffe9b4) border-box;color:var(--ink)}
 .panel{margin-top:26px;padding:26px 22px 30px;text-align:center}
 .panel>.ticket:first-child{margin-top:0}
 .panel .note{color:var(--ink2)}
