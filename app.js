@@ -5,7 +5,7 @@
   // URLが決まったら入れる(空のあいだはボタンを押しても移動しない)
   var LINKS = { pdrnCoupon: '', serumCoupon: '', skinCoupon: '', boostCoupon: '', entry: '' };
   var ITEM_URL = 'https://item.rakuten.co.jp/yunth/';
-  // ガチャの中身をページに出さない場合は false
+  // ガチャで当たるアイテムをページに出さない場合は false
   var SHOW_PRIZE = true;
 
   var T = function (s) { return new Date('2026-' + s + '+09:00').getTime(); };
@@ -49,7 +49,7 @@
   ];
   var DEALS = [
     ['yb-119-001', '飲むビタミンC リポソーム', '2.5g×28包', 50],
-    ['ys-r184', '美顔器 Deep&nbsp;Boost<wbr>セット', '生VC美白⁠<sup>※1</sup>美容液⁠<sup>＊</sup>、<wbr>ピュアマスク4種 各1袋つき', 25, 'deepboost-sq.webp'],
+    ['ys-r184', '美顔器 Deep&nbsp;Boost<wbr>セット', '生VC美白⁠<sup>※1</sup>美容液⁠<sup>＊</sup>、<wbr>ピュアマスク4種<wbr>各1袋', 25, 'deepboost-sq.webp'],
     ['111-01', '生VC美白⁠<sup>※1</sup>化粧水⁠<sup>＊</sup>', '120ml', 20],
     ['112', '生VC<wbr>トーンアップUV', '全3色 30g', 20],
     ['yb-123-001', 'クッション<wbr>ファンデーション<br>エアレス', '15g パフ付き', 20]
@@ -73,12 +73,12 @@
 
   /* ---- 商品の描画 ---- */
   $('[data-days]').innerHTML = GACHA.map(function (g, i) {
-    var prize = SHOW_PRIZE ? '<p class="day__lbl">ガチャの中身</p><p class="day__prize">' + g.prize + '</p>' : '';
+    var prize = SHOW_PRIZE ? '<p class="day__lbl">当たるアイテム</p><p class="day__prize">' + g.prize + '</p>' : '';
     var items = g.items.map(function (k) {
       var it = G[k];
       return '<a href="' + url(it[0]) + '" target="_blank" rel="noopener"><span class="th ' + (it[3] || '') + '"><img src="' + src(it[1]) + '" alt="' + plain(it[2]) + '" loading="lazy"></span>' + it[2] + '</a>';
     }).join('');
-    return '<article class="day"><div class="day__top"><p class="day__d">' + g.m + '<small>(' + g.w + ')</small></p><p class="day__t">20:00〜22:00</p><p class="state" data-gstate="' + i + '"></p></div>' +
+    return '<article class="day"><svg class="day__orn" viewBox="0 0 56 70" aria-hidden="true"><path d="M28 0v12" stroke="#c9a25a" stroke-width="1.5"/><rect x="21" y="10" width="14" height="9" rx="2" fill="url(#oG)"/><circle cx="28" cy="43" r="25" fill="url(#' + (i % 2 ? 'oY' : 'oP') + ')"/></svg><div class="day__top"><p class="day__d">' + g.m + '<small>(' + g.w + ')</small></p><p class="day__t">20:00〜22:00</p><p class="state" data-gstate="' + i + '"></p></div>' +
       '<div class="day__body">' + prize + '<p class="day__lbl">対象商品</p><div class="tgt' + (g.items.length === 1 ? ' tgt--1' : '') + '">' + items + '</div></div></article>';
   }).join('');
 
@@ -123,14 +123,14 @@
     return '<div class="' + c + '"><b>' + (i + 2) + '</b><span>' + w + '</span></div>';
   }).join('');
   var ROWS = [
-    { to: 'pdrn', t: '先行 生PDRN⁠<sup>※</sup>美容液', s: '12/2 10:00〜23:59', b: [[2, 2]], c: '#8b93a3', pre: 1 },
-    { to: 'gacha', t: 'Yunthガチャ', s: '20:00〜22:00', b: [[3, 3], [4, 4], [5, 5], [10, 10]], c: '#8f2049' },
-    { to: 'serum', t: '美容液4種 20%OFFクーポン', s: '12/3 10:00〜12/11 9:59', b: [[3, 11]], c: '#d31c5b' },
-    { to: 'serum', t: '美容液4種 ポイント10倍', s: '3日・4日・5日・10日', b: [[3, 3], [4, 4], [5, 5], [10, 10]], c: '#e0a23a' },
-    { to: 'skin', t: 'スキンケア4商品 30%OFFクーポン', s: '12/3 10:00〜12/11 9:59', b: [[3, 11]], c: '#f0608f' },
-    { to: 'boost', t: 'Deep Boost 特別セット 32%OFF', s: '12/3 10:00〜12/11 1:59', b: [[3, 11]], c: '#b0487a' },
-    { to: 'deal', t: '楽天スーパーDEAL 最大50%還元', s: '12/4 10:00〜12/11 9:59', b: [[4, 11]], c: '#e0a23a' },
-    { to: 'new', t: '新規購入者限定 ポイント+9倍', s: '12/4 20:00〜12/11 1:59', b: [[4, 11]], c: '#f58fb0' }
+    { to: 'pdrn', t: '先行 生PDRN⁠<sup>※</sup>美容液', s: '12/2 10:00〜23:59', b: [[2, 2]], c: '#a9aeb8', pre: 1 },
+    { to: 'gacha', t: 'Yunthガチャ', s: '20:00〜22:00', b: [[3, 3], [4, 4], [5, 5], [10, 10]], c: '#bd3560' },
+    { to: 'serum', t: '美容液4種 20%OFFクーポン', s: '12/3 10:00〜12/11 9:59', b: [[3, 11]], c: '#d9809a' },
+    { to: 'serum', t: '美容液4種 ポイント10倍', s: '3日・4日・5日・10日', b: [[3, 3], [4, 4], [5, 5], [10, 10]], c: '#cfab66' },
+    { to: 'skin', t: 'スキンケア4商品 30%OFFクーポン', s: '12/3 10:00〜12/11 9:59', b: [[3, 11]], c: '#e6a3b5' },
+    { to: 'boost', t: 'Deep Boost 特別セット 32%OFF', s: '12/3 10:00〜12/11 1:59', b: [[3, 11]], c: '#c9879b' },
+    { to: 'deal', t: '楽天スーパーDEAL 最大50%還元', s: '12/4 10:00〜12/11 9:59', b: [[4, 11]], c: '#cfab66' },
+    { to: 'new', t: '新規購入者限定 ポイント+9倍', s: '12/4 20:00〜12/11 1:59', b: [[4, 11]], c: '#e6a3b5' }
   ];
   $('[data-cal-rows]').innerHTML = ROWS.filter(function (r) { return !(r.pre && isPdrnOver); }).map(function (r) {
     var bars = r.b.map(function (b) { return '<i style="--c:' + r.c + ';grid-column:' + (b[0] - 1) + '/' + b[1] + '"></i>'; }).join('');
@@ -168,27 +168,6 @@
   new IntersectionObserver(function (es) {
     $('[data-dock]').classList.toggle('is-show', !es[0].isIntersecting);
   }, { rootMargin: '-120px 0px 0px 0px' }).observe($('#top'));
-
-  /* ---- ガチャ ---- */
-  var machine = $('[data-machine]'), knob = machine.querySelector('.knob'), out = $('[data-gout]'), turned = 0, idx = -1;
-  var firstIdx = Math.max(0, GACHA.findIndex(function (g) { return now() <= g.end; }));
-  out.innerHTML = '<p class="gout__n">カプセルの中は<br>日ごとにちがいます</p><p>※実際の抽選ではありません</p>';
-  if (!SHOW_PRIZE) { $('.gturn').hidden = true; out.hidden = true; }
-  function turn() {
-    if (!SHOW_PRIZE || machine.classList.contains('is-spin')) return;
-    turned += 1;
-    idx = idx < 0 ? firstIdx : (idx + 1) % GACHA.length;
-    knob.style.transform = 'rotate(' + turned * 360 + 'deg)';
-    machine.classList.add('is-spin');
-    setTimeout(function () {
-      var g = GACHA[idx];
-      out.innerHTML = '<p class="gout__d">' + g.m + '<small>(' + g.w + ')</small> 20:00〜22:00</p><p class="gout__n">' + g.prize + '</p><p>※実際の抽選ではありません</p>';
-      out.classList.add('is-pop');
-      $('.gturn').textContent = 'もう一度回して、ほかの日を見る';
-    }, 1150);
-    setTimeout(function () { machine.classList.remove('is-spin'); machine.classList.add('is-out'); out.classList.remove('is-pop'); }, 2000);
-  }
-  $$('[data-turn]').forEach(function (b) { b.addEventListener('click', turn); });
 
   /* ---- 時計 ---- */
   var pad = function (n) { return String(n).padStart(2, '0'); };
