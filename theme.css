@@ -147,3 +147,12 @@ body::before{background:linear-gradient(180deg,var(--out),var(--bg2) 55%,var(--o
   .dayarrow{width:40px;height:40px;margin-top:-20px}.dayarrow--p{left:12px}.dayarrow--n{right:12px}
 }
 .rail__term,.rcd .gcd__l{color:#fff}
+
+/* ---- 粉雪 ---- */
+.snow{display:block;pointer-events:none}
+.snow--bg{position:fixed;inset:0;z-index:0;width:100%;height:100%;display:none}
+.snow--fv{position:absolute;left:0;top:0;z-index:1;width:100%;height:75%}
+.fv__p{z-index:2}
+.main{z-index:1}
+@media (min-width:1220px){.snow--bg{display:block}}
+@media (prefers-reduced-motion:reduce){.snow{display:none!important}}
