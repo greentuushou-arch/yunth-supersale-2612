@@ -157,3 +157,5 @@ body::before{background:linear-gradient(180deg,var(--out),var(--bg2) 55%,var(--o
 .dock a{padding-left:0;padding-right:0;white-space:nowrap}
 @media (min-width:1220px){.snow--bg{display:block}}
 @media (prefers-reduced-motion:reduce){.snow{display:none!important}}
+/* 冒頭の注意書き: スマホで1行に収める */
+.fv__pre{padding:6px 8px;font-size:min(13px,3.05vw);white-space:nowrap}
