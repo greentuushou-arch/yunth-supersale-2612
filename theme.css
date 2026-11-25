@@ -1,0 +1,149 @@
+/* 配色テーマ: <html data-theme="pink"> / <html data-theme="red">
+   白や薄いピンクの面は使わず、FVの地色・濃い面・金・白文字でくっきり見せる */
+:root[data-theme="pink"]{
+  --bg1:#cf2f69;--bg2:#b52159;       /* セクションの地(交互) */
+  --pn1:#a5184e;--pn2:#951346;       /* 地に重ねるパネル */
+  --deep:#a3194e;--out:#b8265d;      /* 帯・ヘッダー / 両脇の地 */
+  --tk1:#ff6096;--tk2:#ea3376;       /* クーポン券 */
+  --hot:#c2205a;--wine:#6a0d2f;--soft:#ffd9e5;
+  --bar1:#ff86ad;--bar2:#ffb3cb;
+}
+:root[data-theme="red"]{
+  --bg1:#b40a20;--bg2:#930014;
+  --pn1:#8a0011;--pn2:#74000d;
+  --deep:#6d0010;--out:#7a0012;
+  --tk1:#ee2c41;--tk2:#d20f28;
+  --hot:#b00a20;--wine:#5c000c;--soft:#ffe0da;
+  --bar1:#ff7d7d;--bar2:#ffb4a8;
+}
+:root{
+  --gold-grad:linear-gradient(170deg,#fff0c2 4%,#efcf85 42%,#d3a14a 74%,#f6dfa6 100%);
+  --gold-line:linear-gradient(150deg,#fff0c4,#d9a748 28%,#ffe7ac 52%,#c8923a 78%,#ffe4a4);
+  --cream:#ffe6ad;--rule:#ffffff38;
+  --ink:#fff;--ink2:var(--soft);--line:var(--rule);--gold:#e6bd6c;--gold-l:#f3d592;--gold-d:var(--cream);
+  --rose-grad:linear-gradient(165deg,var(--tk1),var(--tk2));
+}
+
+/* ---- 地 ---- */
+body{background:var(--out);color:#fff}
+body::before{background:linear-gradient(180deg,var(--out),var(--bg2) 55%,var(--out))}
+.main{background:var(--bg2);box-shadow:0 0 0 2px #e0b25c,0 0 60px #00000059}
+.site{background:var(--deep);border:0}
+.site a{color:#fff}
+.fv{background:var(--bg2)}
+.fv__pre,.fv__note{background:var(--deep);color:var(--soft)}
+.sec{color:#fff}
+.sec--a{background:var(--bg1)}
+.sec--b,.sec--white{background:var(--bg2)}
+.sec--white{border-top:1px solid #e0b25c}
+.sec--b>.h2,.sec--b>.term{color:#fff}
+.legal{background:var(--deep);color:var(--soft)}
+.note,.sec--a>.note{color:var(--soft)}
+
+/* ---- FVの2枠 ---- */
+.fv__p{top:74.7%;height:24.2%;width:47.4%;color:var(--hot)}
+.fv__p--l{left:1.8%}.fv__p--r{left:50.8%}
+.fv__p strong{font-size:4.5cqw;color:#4b1c30}
+.fv__p .cp{font-size:13.6cqw;margin:3.4cqw 0 3.2cqw}
+.fv__p .d i{white-space:nowrap}
+.fv__p .d{font-size:max(14px,3.2cqw);color:#4b1c30}
+
+/* ---- 見出し・状態 ---- */
+.term{color:#fff}
+.state,.sec--a>.state{border-color:#fff;color:#fff}
+.state.is-live,.sec--a>.state.is-live,.sec--b>.state.is-live{border-color:transparent;background:var(--gold-grad);color:var(--wine)}
+.state.is-end{border-color:#ffffff70;color:#ffffffa8;background:none}
+
+/* ---- ボタン ---- */
+.btn--gold{background:linear-gradient(100deg,#dcb05a,#fff0c4 48%,#dcb05a);color:var(--wine)}
+.btn--hot{background:none;border:2px solid var(--cream);color:var(--cream)}
+.btn--s{background:none;border:1px solid var(--cream);color:var(--cream)}
+.btn--hot:hover{background:#ffffff1f}
+
+/* ---- カレンダー ---- */
+.calsec{background:linear-gradient(165deg,var(--tk1),var(--tk2))}
+.calsec__h button{color:#fff}
+.cal{border:2px solid transparent;border-radius:14px;background:linear-gradient(var(--bg2),var(--bg2)) padding-box,var(--gold-line) border-box}
+.cal__days{border-bottom-color:var(--gold)}
+.cal__days .sat span{color:#bfe0ff}.cal__days .sun span{color:#ffd0d0}
+.cal__days .is-today,.cal__days .is-today span{color:var(--wine)}
+.cal__days .is-today{background:var(--gold-grad)}
+.cal__row p small{color:var(--soft)}
+.cal__track{background:repeating-linear-gradient(90deg,#ffffff24 0 calc(10% - 2px),transparent calc(10% - 2px) 10%)}
+
+/* ---- パネル・カード ---- */
+.panel,.day{border:2px solid transparent;border-radius:18px;color:#fff}
+.sec--a .panel,.sec--a .day{background:linear-gradient(var(--pn1),var(--pn1)) padding-box,var(--gold-line) border-box}
+.sec--b .panel{background:linear-gradient(var(--pn2),var(--pn2)) padding-box,var(--gold-line) border-box}
+.panel .note{color:var(--soft)}
+.ticket{background:linear-gradient(165deg,var(--tk1),var(--tk2))}
+.p10{color:var(--cream)}
+.p10__l,.p10__d{color:#fff}
+.item__n{color:#fff}
+.item__v{color:var(--soft)}
+.item__p strong,.calc strong b,.calc strong em,.back{color:var(--cream)}
+.row,.deal__hero{border-color:var(--rule)}
+.row>img,.item>img,.deal__hero img{border-radius:6px}
+.boost__v .pl{color:#fff}
+.deal__m,.new__m{color:#fff}
+.new__m b,.new__m i{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.notes{color:#fff}
+
+/* ---- ガチャの日別カード(小さめ) ---- */
+.gacha__box{width:118px}
+.daytabs{max-width:440px;margin-top:22px}
+.daytabs button{border:1px solid #ffffffb3}
+.days{--w:336px;gap:14px;padding-top:18px;padding-bottom:22px}
+.day__top{padding:16px 10px 12px}
+.day__d{font-size:44px;color:var(--cream)}
+.day__d small{font-size:17px}
+.day__d em{display:block;margin:2px 0 0;font-size:22px;line-height:1.2;color:#fff}
+.day .state{margin-top:6px;padding:1px 16px;font-size:16px}
+.day__body{margin:0 18px;padding:12px 0 18px}
+.day__lbl{font-size:15px}
+.day__prize{font-size:20px;min-height:2.8em}
+.day__prize+.day__lbl{margin-top:8px;padding-top:10px}
+.slot{aspect-ratio:2.3/1;margin-top:6px;background:#ffffff1c;color:#ffffffb8}
+.tgt{gap:1px 12px;margin-top:8px}
+.tgt a{font-size:14px;line-height:1.45;letter-spacing:0;text-decoration-color:var(--gold)}
+.dayarrow{width:46px;height:46px;margin-top:-23px}
+.dayarrow--p{left:84px}.dayarrow--n{right:84px}
+
+/* ---- 両脇メニュー ---- */
+.rbox{border-width:2px;border-radius:12px;background:linear-gradient(var(--bg2),var(--bg2)) padding-box,var(--gold-line) border-box;box-shadow:0 12px 34px -6px #00000080}
+.rbox__head{background:linear-gradient(165deg,var(--tk1),var(--tk2))}
+.rail{color:#fff}
+.menu a,.offers a{border-bottom-color:var(--rule);color:#fff}
+.menu a::after{border-color:var(--cream)}
+.menu a:hover,.offers a:hover{background:#ffffff1a}
+.menu a.is-cur{background:var(--gold-grad);color:var(--wine)}
+.menu a.is-cur::after{border-color:var(--wine)}
+.offers small{color:var(--soft)}
+.offers .v{color:var(--cream)}
+.offers .is-live small{background:var(--cream);color:var(--wine)}
+.offers .g,.offers .g:hover{background:var(--gold-grad);color:var(--wine)}
+.offers .g .v,.offers .g small{color:var(--wine)}
+.offers .g.is-live small{background:var(--hot);color:#fff}
+
+/* ---- 下部メニュー(SP) ---- */
+.dock{background:var(--deep);color:#fff;box-shadow:0 -1px 0 var(--gold)}
+.dock a{border-right-color:var(--rule)}
+.dock a b{color:var(--cream)}
+.dock a.is-cur{background:var(--gold-grad)}
+.dock a.is-cur,.dock a.is-cur b{color:var(--wine)}
+
+@media (max-width:600px){
+  .panel,.day{border-radius:14px}
+  .gacha__box{width:88px}
+  .days{--w:248px;gap:10px;padding-top:16px;padding-bottom:18px}
+  .day__top{padding:13px 8px 10px}
+  .day__d{font-size:38px}.day__d small{font-size:16px}
+  .day__d em{margin:1px 0 0;font-size:20px}
+  .day__body{margin:0 12px;padding:10px 0 14px}
+  .day__prize{font-size:18px}
+  .tgt a{font-size:14px}.tgt{gap:0 10px}
+  .fv__p .cp{font-size:13cqw;margin:2.6cqw 0 2.2cqw}
+  .fv__p .d{line-height:1.3;text-align:center}.fv__p .d i{display:block}
+  .dayarrow{width:40px;height:40px;margin-top:-20px}.dayarrow--p{left:12px}.dayarrow--n{right:12px}
+}
+.rail__term,.rcd .gcd__l{color:#fff}

@@ -14,7 +14,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:12px;-webkit-text-size-adjust:100%}
 body{font-family:var(--sans);font-size:17px;line-height:1.8;color:var(--ink);letter-spacing:.04em;background:var(--pearl);-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--pearl) url(images/bg.webp?v=2) center/cover no-repeat}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--pearl) }
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 i,em{font-style:normal}
@@ -230,7 +230,7 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .rail--l{left:max(12px,calc(50% - var(--col)/2 - var(--rail) - 34px))}
 .rail--r{right:max(12px,calc(50% - var(--col)/2 - var(--rail) - 34px));text-align:center}
 .rbox{border-radius:14px;border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(160deg,#fff0c4,#d9a94f 30%,#ffe9b4 55%,#c9953c) border-box;box-shadow:0 10px 34px -8px #b5264f66;overflow:hidden}
-.rbox__head{padding:18px 12px 14px;background:#c8345f url(images/tex-a.webp?v=2) center 30%/150% auto;color:#fff;text-align:center}
+.rbox__head{padding:18px 12px 14px;background:#c8345f;color:#fff;text-align:center}
 .rail__logo{width:96px;margin:0 auto}
 .rail__ttl{margin-top:10px;font-family:var(--num);font-weight:600;font-size:27px;line-height:1.1}
 .rail__ttl b{display:block;font-weight:700;font-size:80px;line-height:.95;letter-spacing:.01em}
@@ -352,8 +352,6 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 @media (min-width:601px){.calsec__h button{cursor:default;pointer-events:none}}
 
 /* ---- 中央の地: FVの赤ピンクの夜空(a) / きらめくピンクの雪(b) ---- */
-.sec--a{background:#c8345f url(images/tex-a.webp?v=2) center top/100% auto;color:#fff}
-.sec--b{background:#ffcad8 url(images/tex-b.webp?v=2) center top/100% auto}
 .sec--a,.sec--b{padding-left:24px;padding-right:24px}
 .sec--a>.note{color:#ffe6ee}
 .sec--a>.state{border-color:#fff;color:#fff}
