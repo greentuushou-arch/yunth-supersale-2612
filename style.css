@@ -1,13 +1,13 @@
 /* Yunth 楽天スーパーSALE 2026.12
    構成: 中央640pxカラム＋PC両脇メニュー(1180px以上) / SPは下部メニュー
-   配色: パール×シャンパンゴールド×くすみローズ(FVのピンクを主役にする) */
+   配色: 中央=FVの赤ピンク×ネオンピンク×金 / 両脇の地=パール×金 */
 :root{
-  --hot:#c5345f;--hot-d:#95264a;--rose:#d9809a;
+  --hot:#d4245a;--hot-d:#a1264a;--rose:#d9809a;
   --blush:#faeaea;--pale:#fffaf6;--paper:#fff;--pearl:#fbf3ec;
   --ink:#51303b;--ink2:#80636c;--line:#ecd8d0;
   --gold:#c9a25a;--gold-l:#ecd8a6;--gold-d:#a07632;--wine:#6d2b41;
   --gold-grad:linear-gradient(170deg,#fdf3d8 4%,#ead09a 42%,#cda762 74%,#f3e2b8 100%);
-  --rose-grad:linear-gradient(165deg,#e07a98 0,#c83f69 58%,#b22d55 100%);
+  --rose-grad:linear-gradient(165deg,#f35c86 0,#da2a5e 52%,#b91c4b 100%);
   --col:640px;--rail:268px;
   --sans:"Noto Sans JP",system-ui,sans-serif;--num:"Jost","Noto Sans JP",sans-serif;
 }
@@ -27,7 +27,7 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 
 /* ---- 割引表記の共通部品 ---- */
 .off{display:inline-flex;align-items:center;line-height:1;white-space:nowrap}
-.deal__m .off{background:linear-gradient(170deg,#e4668a,#c5345f 46%,#a8254c);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.04em .02em}
+.deal__m .off{background:linear-gradient(170deg,#fff6d6 6%,#ffdf8e 40%,#f2b955 70%,#ffeab4);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.04em .02em}
 .off>b{font-family:var(--num);font-weight:600;font-size:1em;line-height:.8;letter-spacing:-.02em}
 .off__u{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:.04em;margin-left:.05em}
 .off__u i{display:block;line-height:.9}
@@ -43,8 +43,6 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .main{position:relative;max-width:var(--col);margin:0 auto;background:var(--pale);box-shadow:0 0 0 1px #e9d3b0,0 0 70px #b8788a3d;overflow:hidden}
 .sec{position:relative;padding:60px 28px;text-align:center}
 .sec--white{background:var(--paper)}
-.sec--blush{background:var(--blush)}
-.sec--pearl{background:linear-gradient(180deg,#fff8ea,#fffdf9 260px,#fffaf5)}
 .h2{font-weight:700;font-size:38px;line-height:1.4;letter-spacing:.06em;word-break:auto-phrase}
 .h2 small{display:block;font-size:22px;font-weight:700;letter-spacing:.08em;line-height:1.5}
 .lead{margin-top:10px;font-size:17px}
@@ -76,11 +74,11 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .fv__note{padding:12px 20px;background:#fffdfa;color:var(--ink2);font-size:14px;line-height:1.65;letter-spacing:.02em;text-align:center;word-break:auto-phrase}
 
 /* ---- 早見表 ---- */
-.calsec{background:linear-gradient(165deg,#f7ebcd,#ecd7a8 55%,#f5e6c2);padding:44px 24px 48px}
+.calsec{background:linear-gradient(165deg,#f35c86,#da2a5e 55%,#c21f50);padding:44px 24px 48px}
 .calsec__h{font-size:1em;line-height:1}
-.calsec__h button{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;padding:0;border:0;background:none;color:var(--wine);font:700 38px/1.4 var(--sans);letter-spacing:.12em;cursor:pointer}
+.calsec__h button{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;padding:0;border:0;background:none;color:#fff;font:700 38px/1.4 var(--sans);letter-spacing:.12em;cursor:pointer}
 .calsec__h i{display:none}
-.cal{margin-top:20px;padding:20px 22px 22px;background:#fffdf8;border-radius:6px;box-shadow:0 0 0 1px #d9b974;text-align:left}
+.cal{margin-top:20px;padding:20px 22px 22px;background:linear-gradient(180deg,#fff,#fff4f6) padding-box,linear-gradient(150deg,#fff3cf,#e0ad54 28%,#fff0c6 52%,#cf9a40 78%,#ffe9b4) border-box;border:4px solid transparent;border-radius:24px;text-align:left}
 .cal__row:last-of-type{border-bottom:0;padding-bottom:0}
 .cal__days,.cal__track{display:grid;grid-template-columns:repeat(10,1fr)}
 .cal__days{position:relative;border-bottom:2px solid var(--hot)}
@@ -94,12 +92,11 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .cal__row p span{word-break:auto-phrase}
 .cal__row p{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:0 12px;font-weight:700;font-size:18px;line-height:1.45;text-align:center}
 .cal__row p small{font-family:var(--num);font-weight:500;font-size:16px;letter-spacing:.01em;color:var(--ink2);white-space:nowrap}
-.cal__track{margin-top:7px;height:22px;background:repeating-linear-gradient(90deg,#f5e7de 0 calc(10% - 2px),transparent calc(10% - 2px) 10%)}
+.cal__track{margin-top:7px;height:22px;background:repeating-linear-gradient(90deg,#f9e3e8 0 calc(10% - 2px),transparent calc(10% - 2px) 10%)}
 .cal__track i{border-radius:3px;background:var(--c,var(--hot));grid-row:1;margin-right:2px}
 
 /* ---- 先行 PDRN ---- */
-.pdrn{background:linear-gradient(180deg,#f7f7f8,#e6e9ed 60%,#f5f5f6)}
-.pdrn__img{margin:24px -28px 0;background:#8c8d90}
+.pdrn__img{overflow:hidden;border-radius:18px}
 .pdrn__img img{width:100%}
 .calc{margin-top:22px;font-size:17px;line-height:1.5}
 .calc .num{font-weight:500;font-size:24px}
@@ -108,13 +105,12 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .calc strong em{font-weight:700;font-size:30px;color:var(--hot)}
 
 /* ---- ガチャ ---- */
-.gacha{background:linear-gradient(180deg,#fff6f4,#fbe6e8 46%,#fdf2ee)}
 .gacha__box{display:block;width:150px;margin:0 auto 6px}
 .gacha__ttl{font-weight:700;font-size:56px;line-height:1.25;letter-spacing:.08em;color:var(--hot)}
 .gacha__rule{margin-top:8px;font-weight:700;font-size:25px;line-height:1.5;letter-spacing:.04em}
 .gacha__rule b{font-family:var(--num);font-weight:600;font-size:40px;letter-spacing:0;color:var(--hot)}
 .gacha__500{display:flex;align-items:baseline;justify-content:center;margin-top:2px;font-weight:700;font-size:38px;line-height:1.1;white-space:nowrap}
-.gacha__500 b{font-family:var(--num);font-weight:600;font-size:124px;line-height:1;letter-spacing:-.02em;margin:0 .04em;background:linear-gradient(170deg,#dfbc74 4%,#bd8f43 46%,#a1742b 72%,#cfa758);-webkit-background-clip:text;background-clip:text;color:transparent}
+.gacha__500 b{font-family:var(--num);font-weight:600;font-size:124px;line-height:1;letter-spacing:-.02em;margin:0 .04em;background:linear-gradient(170deg,#fff6d6 6%,#ffdf8e 40%,#f2b955 70%,#ffeab4);-webkit-background-clip:text;background-clip:text;color:transparent}
 .gcd{margin-top:22px}
 .gcd__l{font-weight:700;font-size:18px;color:var(--gold-d);letter-spacing:.08em}
 .gcd__n{font-family:var(--num);font-weight:500;font-size:48px;line-height:1.2;white-space:nowrap}
@@ -122,8 +118,7 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 
 /* 日別カード: オーナメントを吊るした招待状の形 */
 .days{display:grid;gap:56px;margin-top:66px}
-.day{position:relative;border-radius:8px;background:var(--paper);color:var(--ink);box-shadow:0 0 0 1px var(--gold-l),0 14px 34px -18px #a8506b66}
-.day::before{content:"";position:absolute;inset:7px;border:1px solid var(--gold-l);border-radius:4px;pointer-events:none}
+.day{position:relative;color:var(--ink)}
 .day__orn{position:absolute;left:50%;top:-42px;width:56px;margin-left:-28px}
 .day__top{padding:40px 18px 18px}
 .day__d{font-family:var(--num);font-weight:600;font-size:66px;line-height:1;letter-spacing:0;color:var(--hot)}
@@ -195,7 +190,7 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .deal__m .l small{display:block;font-size:34px}
 .deal__m .off{font-size:170px}
 .deal__m .off .k{font-size:.3em}
-.deal__hero{display:block;margin-top:28px;padding:24px 20px 26px;background:linear-gradient(180deg,#fff,#fff6f2);border:1px solid var(--gold);box-shadow:inset 0 0 0 6px #fff,inset 0 0 0 7px var(--gold-l);border-radius:8px;text-decoration:none}
+.deal__hero{display:block;padding-bottom:30px;border-bottom:1px solid #f0c3cf;text-decoration:none}
 .deal__hero img{width:300px;margin:0 auto;border-radius:6px}
 .deal__hero .item__n{font-size:26px}
 .back{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px;color:var(--hot);font-weight:700;font-size:18px;line-height:1.25}
@@ -207,12 +202,9 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .deals .back{margin-top:auto;padding-top:10px}
 
 /* ---- 新規 ---- */
-.new{background:linear-gradient(170deg,#dc7893,#c24a71 70%,#b83f68);color:#fff}
-.new .state{border-color:#fff;color:#fff}.new .state.is-live{background:#fff;color:var(--hot)}
 .new__m{display:flex;align-items:baseline;justify-content:center;margin-top:16px;font-weight:700;font-size:44px;line-height:1;white-space:nowrap}
 .new__m b{font-family:var(--num);font-weight:600;font-size:170px;line-height:.9;letter-spacing:-.02em;margin-left:.06em}
 .new__m i{font-size:80px}
-.new .note{color:#fff}
 .new .lead{margin-top:16px;font-weight:700;font-size:21px}
 
 /* ---- 注意・締め ---- */
@@ -227,33 +219,37 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .rail{position:fixed;top:0;bottom:0;z-index:3;width:var(--rail);display:none;flex-direction:column;justify-content:safe center;padding:20px 0;color:var(--ink);overflow-y:auto;scrollbar-width:none}
 .rail--l{left:max(12px,calc(50% - var(--col)/2 - var(--rail) - 34px))}
 .rail--r{right:max(12px,calc(50% - var(--col)/2 - var(--rail) - 34px));text-align:center}
-.rail__logo{width:118px;margin:0 auto}
-.rail__ttl{margin-top:16px;text-align:center;font-family:var(--num);font-weight:600;font-size:27px;line-height:1.1;color:var(--hot)}
-.rail__ttl b{display:block;font-weight:700;font-size:78px;line-height:.95;letter-spacing:.01em}
-.rail__term{margin-top:12px;padding:8px 0;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);text-align:center;font-family:var(--num);font-weight:500;font-size:20px;line-height:1.45;letter-spacing:0}
-.rail__term small{font-family:var(--sans);font-size:14px}
-.menu{margin-top:14px;background:#ffffffd9;border:1px solid var(--gold-l);border-radius:6px;overflow:hidden}
+.rbox{border-radius:14px;border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(160deg,#fff0c4,#d9a94f 30%,#ffe9b4 55%,#c9953c) border-box;box-shadow:0 10px 34px -8px #b5264f66;overflow:hidden}
+.rbox__head{padding:18px 12px 14px;background:#c8345f url(images/tex-a.webp) center 30%/150% auto;color:#fff;text-align:center}
+.rail__logo{width:96px;margin:0 auto}
+.rail__ttl{margin-top:10px;font-family:var(--num);font-weight:600;font-size:27px;line-height:1.1}
+.rail__ttl b{display:block;font-weight:700;font-size:80px;line-height:.95;letter-spacing:.01em}
+.rail__term{margin-top:8px;font-family:var(--num);font-weight:600;font-size:22px;line-height:1.35;letter-spacing:0;color:#ffe9b4}
+.rail__term small{font-family:var(--sans);font-size:15px}
+.menu a{position:relative;display:block;padding:10px 26px 10px 16px;border-bottom:1px solid #f4cdd8;text-decoration:none;font-weight:700;font-size:18px;line-height:1.4;letter-spacing:.03em;text-align:center;transition:background .2s,color .2s}
+.menu a::after{content:"";position:absolute;right:14px;top:50%;width:8px;height:8px;margin-top:-4px;border-top:2px solid var(--hot);border-right:2px solid var(--hot);transform:rotate(45deg)}
 .menu li:last-child a{border-bottom:0}
-.menu a{display:block;padding:9px 12px;border-bottom:1px solid #e3cba6;text-decoration:none;font-weight:700;font-size:17px;line-height:1.4;letter-spacing:.04em;text-align:center;transition:background .2s}
-.menu a:hover{background:#ffffffb0}
-.menu a.is-cur{background:var(--hot);border-color:var(--hot);color:#fff;font-weight:700}
-.rail__h{font-weight:700;font-size:18px;letter-spacing:.1em;color:var(--gold-l)}
-.rcd{padding:12px 8px 14px;border:1px solid var(--gold);border-radius:6px;background:#ffffffc9}
-.rcd .gcd__l{font-size:16px}.rcd .gcd__n{font-size:36px}.rcd .gcd__n i{font-size:14px;margin:0 4px 0 1px}
-.offers{display:grid;gap:8px;margin-top:10px}
-.offers a{display:grid;grid-template-columns:1fr 128px;align-items:center;min-height:74px;padding:8px 10px;background:#ffffffe6;border:1px solid var(--gold-l);color:var(--ink);border-radius:6px;text-decoration:none;transition:transform .2s}
-.offers a:hover{transform:translateX(-4px)}
-.offers p{font-weight:700;font-size:16px;line-height:1.35;letter-spacing:.01em}
+.menu a:hover{background:#fff0f4}
+.menu a.is-cur{background:var(--rose-grad);color:#fff}
+.menu a.is-cur::after{border-color:#fff}
+.rcd.rbox__head{padding:13px 8px 14px}
+.rcd .gcd__l{font-size:17px;color:#ffe9b4}.rcd .gcd__n{font-size:34px;font-weight:600;letter-spacing:0}.rcd .gcd__n i{font-size:14px;margin:0 3px 0 1px}
+.offers{display:grid}
+.offers a{display:grid;grid-template-columns:1fr 134px;align-items:center;min-height:80px;padding:8px 8px 8px 10px;border-bottom:1px solid #f4cdd8;color:var(--ink);text-decoration:none;transition:background .2s}
+.offers a:last-child{border-bottom:0}
+.offers a:hover{background:#fff0f4}
+.offers p{font-weight:700;font-size:17px;line-height:1.35;letter-spacing:0}
 .offers small{display:block;font-weight:500;font-size:14px;color:var(--ink2)}
-.offers .is-live small{color:var(--hot);font-weight:700}
-.offers .is-end{opacity:.55}
+.offers .is-live small{width:fit-content;margin:3px auto 0;padding:0 12px;background:var(--hot);color:#fff;font-weight:700;border-radius:999px}
+.offers .is-end{opacity:.5}
 .offers .v{color:var(--hot);justify-self:center;white-space:nowrap;line-height:1}
-.offers .off{font-size:52px}
-.offers .off .k{font-size:.34em}
-.offers .v>b{font-family:var(--num);font-weight:600;font-size:46px;letter-spacing:-.02em}
-.offers .v>i{font-weight:700;font-size:20px;margin-left:2px}
-.offers .g{background:var(--rose-grad);border-color:transparent;color:#fff}
-.offers .g .v,.offers .g small,.offers .g.is-live small{color:#fff}
+.offers .off{font-size:60px}
+.offers .off .k{font-size:.33em}
+.offers .v>b{font-family:var(--num);font-weight:600;font-size:52px;letter-spacing:-.02em}
+.offers .v>i{font-weight:700;font-size:21px;margin-left:2px}
+.offers .g{background:var(--gold-grad);color:var(--wine)}
+.offers .g:hover{background:var(--gold-grad)}
+.offers .g .v,.offers .g small{color:var(--wine)}
 
 /* ---- 下部メニュー(SP) ---- */
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:8;display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom);background:#fffdfa;color:var(--ink);box-shadow:0 -1px 0 var(--gold),0 -6px 20px #a8506b22;transform:translateY(110%);transition:transform .3s}
@@ -263,12 +259,13 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .dock a.is-cur{background:var(--hot)}
 .dock a.is-cur,.dock a.is-cur b{color:#fff}
 
-@media (min-width:1180px){.rail{display:flex}.dock{display:none}}
-@media (min-width:1180px) and (max-height:800px){
-  .rail__ttl{margin-top:8px}.rail__ttl b{font-size:60px}.menu a{padding:6px 12px;font-size:16px}
-  .rcd{padding:6px 8px 8px}.offers{gap:6px}.offers a{min-height:62px;padding:5px 10px}.offers .off{font-size:44px}.offers .v>b{font-size:40px}
+@media (min-width:1220px){.rail{display:flex}.dock{display:none}}
+@media (min-width:1220px) and (max-height:859px){
+  .rbox__head{padding:10px 12px 10px}.rail__logo{width:78px}.rail__ttl{margin-top:4px;font-size:23px}.rail__ttl b{font-size:62px}.rail__term{font-size:19px;margin-top:4px}
+  .menu a{padding:6px 26px 6px 16px;font-size:17px}
+  .offers a{min-height:66px;padding:5px 8px}.offers .off{font-size:50px}.offers .v>b{font-size:44px}
 }
-@media (max-width:1179px){.legal{padding-bottom:96px}}
+@media (max-width:1219px){.legal{padding-bottom:96px}}
 @media (max-width:600px){
   .sec{padding:52px 18px}
   .h2{font-size:30px}.h2 small{font-size:19px}
@@ -278,7 +275,6 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
   .cal__days b{font-size:21px}
   .cal__row p span{word-break:auto-phrase}
 .cal__row p{font-size:17px}.cal__row p small{font-size:15px}
-  .pdrn__img{margin:22px -18px 0}
   .calc strong b{font-size:56px}
   .gacha__ttl{font-size:44px}.gacha__box{width:120px}
   .gacha__rule{font-size:20px}.gacha__rule b{font-size:32px}
@@ -325,13 +321,13 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .orn{position:fixed;top:0;z-index:2;width:250px;display:none;pointer-events:none}
 .orn--l{left:max(12px,calc(50% - var(--col)/2 - var(--rail) - 25px))}
 .orn--r{right:max(12px,calc(50% - var(--col)/2 - var(--rail) - 25px));transform:scaleX(-1)}
-@media (min-width:1180px) and (min-height:860px){.orn{display:block}.rail{padding-top:140px}}
+@media (min-width:1220px) and (min-height:860px){.orn{display:block}.rail{padding-top:132px}}
 @media (max-width:600px){
   .sec--lit{padding-top:80px}
   .calsec{padding:0}
   .calsec__h button{padding:17px 18px;font-size:22px}
-  .calsec__h i{display:block;position:relative;width:26px;height:26px;border-radius:50%;background:var(--wine)}
-  .calsec__h i::before,.calsec__h i::after{content:"";position:absolute;left:7px;top:12px;width:12px;height:2px;background:#fff;transition:transform .25s}
+  .calsec__h i{display:block;position:relative;width:26px;height:26px;border-radius:50%;background:var(--gold-grad)}
+  .calsec__h i::before,.calsec__h i::after{content:"";position:absolute;left:7px;top:12px;width:12px;height:2px;background:var(--wine);transition:transform .25s}
   .calsec__h i::after{transform:rotate(90deg)}
   .calsec.is-open .calsec__h i::after{transform:none}
   .cal{display:none;margin:0 12px 20px;padding:14px 12px 16px}
@@ -339,3 +335,41 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
   .cal__days b{font-size:20px}
 }
 @media (min-width:601px){.calsec__h button{cursor:default;pointer-events:none}}
+
+/* ---- 中央の地: FVの赤ピンクの夜空(a) / きらめくピンクの雪(b) ---- */
+.sec--a{background:#c8345f url(images/tex-a.webp) center top/100% auto;color:#fff}
+.sec--b{background:#ffcad8 url(images/tex-b.webp) center top/100% auto}
+.sec--a,.sec--b{padding-left:24px;padding-right:24px}
+.sec--a>.note{color:#ffe6ee}
+.sec--a>.state{border-color:#fff;color:#fff}
+.sec--a>.state.is-live,.sec--b>.state.is-live{border-color:transparent;background:var(--gold-grad);color:var(--wine)}
+.sec--b>.h2,.sec--b>.term{color:#b01a49}
+.sec--a .gacha__ttl,.sec--a .gacha__rule b{color:#fff}
+.gacha__ttl{font-size:64px}
+.sec--a>.gcd .gcd__l{color:#ffe9b4}
+.sec--a>.deal__m{color:#fff}
+/* FV下の2枠と同じ金フチのパネル */
+.panel,.day{border:4px solid transparent;border-radius:30px;background:linear-gradient(180deg,#fff,#fff1f4 70%,#ffe9ee) padding-box,linear-gradient(150deg,#fff3cf,#e0ad54 28%,#fff0c6 52%,#cf9a40 78%,#ffe9b4) border-box;box-shadow:0 0 26px #ffd5e0cc;color:var(--ink)}
+.panel{margin-top:26px;padding:26px 22px 30px;text-align:center}
+.panel>.ticket:first-child{margin-top:0}
+.panel .note{color:var(--ink2)}
+.rows{border-top:0}
+.row>img,.item>img{border-radius:10px}
+.row{border-bottom-color:#f3cfd9}
+.row:last-child{border-bottom:0}
+.boost__v{margin-top:6px}
+.new{padding-bottom:64px}
+.new__m{color:var(--hot)}
+@media (max-width:600px){
+  .sec--a,.sec--b{padding-left:12px;padding-right:12px}
+  .panel,.day{border-width:3px;border-radius:24px}
+  .panel{padding:18px 13px 24px}
+  .gacha__ttl{font-size:52px}
+  .ticket__m .cp{font-size:106px}
+  .serums,.deals{gap:30px 8px}
+  .back{gap:2px}.back .off{font-size:43px}
+  .item__p strong b{font-size:40px}
+}
+@media (max-width:374px){.ticket__m .cp{font-size:100px}.back .off{font-size:41px}}
+.fv__note{background:#fff0f4}
+@media (max-width:600px){.note{letter-spacing:0;word-break:auto-phrase}}
