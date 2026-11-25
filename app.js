@@ -79,7 +79,7 @@
       var it = G[k];
       return '<a href="' + url(it[0]) + '" target="_blank" rel="noopener">' + it[2].replace(/<br>/g, '') + '</a>';
     }).join('');
-    return '<article class="day"><div class="day__top"><p class="day__d">' + g.m + '<small>(' + g.w + ')</small><em>20:00〜22:00</em></p><p class="state" data-gstate="' + i + '"></p></div>' +
+    return '<article class="day"><div class="day__top"><p class="day__d">' + g.m + '<small>(' + g.w + ')</small></p><p class="state" data-gstate="' + i + '"></p></div>' +
       '<div class="day__body">' + prize + '<p class="day__lbl">対象商品</p>' + (g.img ? '<img class="slot__img" src="' + src(g.img) + '" alt="対象商品" loading="lazy">' : '<div class="slot">対象商品の画像が入ります</div>') + '<div class="tgt">' + items + '</div></div></article>';
   }).join('');
 
@@ -237,18 +237,19 @@
   var pad = function (n) { return String(n).padStart(2, '0'); };
   function setState(el, s) {
     el.textContent = s[0];
+    el.hidden = !s[0];
     el.classList.toggle('is-live', s[1] === 1);
     el.classList.toggle('is-end', s[1] === 2);
   }
   function termState(k, n) {
     var t = TERMS[k];
-    if (n < t[0]) return [t[2] + ' スタート', 0];
-    if (n <= t[1]) return ['開催中 ' + t[3] + 'まで', 1];
+    if (n < t[0]) return ['', 0]; // 期間は見出しの下にあるので、開始前は何も出さない
+    if (n <= t[1]) return ['開催中', 1];
     return ['終了しました', 2];
   }
   function gachaState(g, n) {
-    if (n < g.start) return [g.day === '12-' + pad(today) ? '本日 20:00から' : '20:00 スタート', 0];
-    return n <= g.end ? ['開催中 22:00まで', 1] : ['終了しました', 2];
+    if (n < g.start) return [g.day === '12-' + pad(today) ? '本日開催' : '', 0];
+    return n <= g.end ? ['開催中', 1] : ['終了しました', 2];
   }
   function tick() {
     var n = now();
