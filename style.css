@@ -117,21 +117,32 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .gcd__n i{font-family:var(--sans);font-size:17px;margin:0 8px 0 3px}
 
 /* 日別カード: オーナメントを吊るした招待状の形 */
-.days{display:grid;gap:56px;margin-top:66px}
-.day{position:relative;color:var(--ink)}
-.day__orn{position:absolute;left:50%;top:-42px;width:56px;margin-left:-28px}
-.day__top{padding:40px 18px 18px}
-.day__d{font-family:var(--num);font-weight:600;font-size:66px;line-height:1;letter-spacing:0;color:var(--hot)}
-.day__d small{font-family:var(--sans);font-weight:700;font-size:24px;margin-left:8px}
-.day__t{margin-top:4px;font-family:var(--num);font-weight:500;font-size:30px;line-height:1.3}
-.day .state{margin-top:8px;padding:2px 20px;font-size:18px}
-.day__body{margin:0 24px;padding:20px 0 34px;border-top:1px solid var(--line)}
+.daytabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:480px;margin:30px auto 0}
+.daytabs button{padding:8px 0 9px;border:2px solid #ffdfe8;border-radius:999px;background:none;color:#fff;font:500 15px/1.2 var(--sans);cursor:pointer;transition:background .2s,color .2s}
+.daytabs b{font-family:var(--num);font-weight:600;font-size:24px;margin-right:2px}
+.daytabs .is-on{border-color:transparent;background:var(--gold-grad);color:var(--wine)}
+.dayslide{position:relative;margin:0 -24px}
+.days{--w:440px;position:relative;display:flex;gap:16px;padding:24px calc(50% - var(--w)/2) 30px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.day{position:relative;flex:0 0 var(--w);scroll-snap-align:center;color:var(--ink);transition:opacity .3s,transform .3s}
+.day:not(.is-on){opacity:.62;transform:scale(.96)}
+.dayarrow{position:absolute;top:50%;z-index:2;width:52px;height:52px;margin-top:-26px;border:0;border-radius:50%;background:var(--gold-grad);box-shadow:0 4px 14px #7a123a66;cursor:pointer}
+.dayarrow::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:13px;border-top:3px solid var(--wine);border-right:3px solid var(--wine)}
+.dayarrow--p{left:34px}.dayarrow--p::after{transform:translate(-30%,-50%) rotate(-135deg)}
+.dayarrow--n{right:34px}.dayarrow--n::after{transform:translate(-70%,-50%) rotate(45deg)}
+.dayarrow:disabled{visibility:hidden}
+.day__top{padding:22px 14px 16px}
+.day__d{font-family:var(--num);font-weight:600;font-size:56px;line-height:1.05;letter-spacing:0;color:var(--hot)}
+.day__d small{font-family:var(--sans);font-weight:700;font-size:20px;margin-left:4px}
+.day__d em{margin-left:12px;font-weight:500;font-size:27px;color:var(--ink);white-space:nowrap}
+.day .state{margin-top:8px;padding:2px 20px;font-size:17px}
+.day__body{margin:0 22px;padding:16px 0 24px;border-top:1px solid var(--line)}
 .day__lbl{font-weight:700;font-size:17px;letter-spacing:.1em;color:var(--gold-d)}
-.day__prize{margin-top:2px;font-weight:700;font-size:30px;line-height:1.45;letter-spacing:.04em;word-break:auto-phrase}
-.day__prize+.day__lbl{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.day__prize{display:grid;place-items:center;min-height:2.8em;font-weight:700;font-size:25px;line-height:1.4;letter-spacing:.02em;word-break:auto-phrase}
+.day__prize+.day__lbl{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
 .slot{display:grid;place-items:center;aspect-ratio:2/1;margin-top:10px;border-radius:4px;background:#fdf1ef;color:#c9a0a8;font-size:15px}
 .slot__img{width:100%;margin-top:10px}
-.tgt{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin-top:14px}
+.tgt{display:flex;flex-wrap:wrap;justify-content:center;gap:3px 14px;margin-top:12px}
 .tgt a{font-size:16px;line-height:1.5;letter-spacing:.01em;font-weight:500;white-space:nowrap;text-underline-offset:4px;text-decoration-color:var(--gold)}
 
 /* ---- クーポン券 ---- */
@@ -178,9 +189,9 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 
 /* ---- Deep Boost ---- */
 .boost{overflow:hidden}
-.boost__v{display:grid;grid-template-columns:auto auto 1fr;align-items:center;justify-content:center;gap:14px;max-width:560px;margin:30px auto 0}
+.boost__v{display:grid;grid-template-columns:auto auto minmax(0,300px);align-items:center;justify-content:center;gap:14px;max-width:560px;margin:30px auto 0}
 .boost__d{display:flex;gap:6px}
-.boost__d img{height:380px;width:auto}
+.boost__d img{height:400px;width:auto}
 .boost__v .pl{font-family:var(--num);font-weight:300;font-size:72px;line-height:1}
 .boost__cap{margin-top:20px;font-weight:700;font-size:25px;line-height:1.5}
 
@@ -281,10 +292,15 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
   .gacha__500{font-size:23px;letter-spacing:0}.gacha__500 b{font-size:82px}
   #gacha .term{display:grid;grid-template-columns:auto auto;gap:0 24px;font-size:28px}
   .gcd__n{font-size:42px}
-  .day__d{font-size:54px}.day__t{font-size:27px}
-  .day__body{margin:0 16px;padding:18px 0 28px}
-  .day__prize{font-size:22px;letter-spacing:.02em}
-  .tgt{gap:4px 14px}.tgt a{font-size:15px}
+  .daytabs{gap:5px}.daytabs button{font-size:14px;border-width:1px}.daytabs b{font-size:20px;margin-right:0}
+  .dayslide{margin:0 -12px}
+  .days{--w:300px;gap:10px;padding-top:20px;padding-bottom:26px}
+  .day__top{padding:18px 8px 14px}
+  .day__d{font-size:44px}.day__d small{font-size:17px}.day__d em{margin-left:6px;font-size:21px}
+  .day__body{margin:0 12px;padding:14px 0 20px}
+  .day__prize{font-size:20px;letter-spacing:0}
+  .dayarrow{width:42px;height:42px;margin-top:-21px}.dayarrow::after{width:10px;height:10px}.dayarrow--p{left:6px}.dayarrow--n{right:6px}
+  .tgt{gap:2px 12px}.tgt a{font-size:15px;letter-spacing:0}
   .ticket{padding:42px 12px 28px;--n:11px}
   .ticket__m .cp{font-size:110px}
   .ticket .btn{margin:30px 8px 0;font-size:20px}
@@ -293,7 +309,7 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
   .item__n{font-size:17px}
   .item__p strong b{font-size:42px}.item__p strong em{font-size:20px}
   .row{grid-template-columns:44% minmax(0,1fr);gap:12px}.row .item__n{font-size:19px}
-  .boost__v{gap:8px}.boost__d img{height:270px}.boost__v .pl{font-size:48px}
+  .boost__v{gap:10px}.boost__d img{height:300px}.boost__v .pl{font-size:48px}
   .boost__cap{font-size:20px}
   .deal__m{gap:6px}.deal__m .l{font-size:24px;letter-spacing:0}.deal__m .l small{font-size:22px;white-space:nowrap}.deal__m .off{font-size:118px}
   .back{font-size:15px;letter-spacing:0;gap:4px}.back .off{font-size:46px}
@@ -374,3 +390,12 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .fv__note{background:#fff0f4}
 @media (max-width:600px){.note{letter-spacing:0;word-break:auto-phrase}}
 .offers .g.is-live small{background:var(--hot);color:#fff}
+
+.fv__pre{padding:8px 14px;background:#fff0f4;color:var(--ink2);font-size:14px;line-height:1.6;letter-spacing:0;text-align:center;word-break:auto-phrase}
+.day{min-width:0;max-width:var(--w)}
+.day__d{white-space:nowrap}
+@media (max-width:600px){
+  .day__d{font-size:40px}.day__d small{font-size:16px;margin-left:2px}.day__d em{font-size:20px}
+  .gacha__box{width:100px}
+  .sec.gacha{padding-bottom:40px}
+}

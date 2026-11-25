@@ -79,9 +79,46 @@
       var it = G[k];
       return '<a href="' + url(it[0]) + '" target="_blank" rel="noopener">' + it[2].replace(/<br>/g, '') + '</a>';
     }).join('');
-    return '<article class="day"><svg class="day__orn" viewBox="0 0 56 70" aria-hidden="true"><path d="M28 0v12" stroke="#c9a25a" stroke-width="1.5"/><rect x="21" y="10" width="14" height="9" rx="2" fill="url(#oG)"/><circle cx="28" cy="43" r="25" fill="url(#' + (i % 2 ? 'oY' : 'oP') + ')"/></svg><div class="day__top"><p class="day__d">' + g.m + '<small>(' + g.w + ')</small></p><p class="day__t">20:00〜22:00</p><p class="state" data-gstate="' + i + '"></p></div>' +
+    return '<article class="day"><div class="day__top"><p class="day__d">' + g.m + '<small>(' + g.w + ')</small><em>20:00〜22:00</em></p><p class="state" data-gstate="' + i + '"></p></div>' +
       '<div class="day__body">' + prize + '<p class="day__lbl">対象商品</p>' + (g.img ? '<img class="slot__img" src="' + src(g.img) + '" alt="対象商品" loading="lazy">' : '<div class="slot">対象商品の画像が入ります</div>') + '<div class="tgt">' + items + '</div></div></article>';
   }).join('');
+
+  // 日別カードのスライド
+  var days = $('[data-days]'), cards = [].slice.call(days.children), dayIdx = 0;
+  $('[data-daytabs]').innerHTML = GACHA.map(function (g) {
+    return '<button type="button"><b>' + g.m + '</b>(' + g.w + ')</button>';
+  }).join('');
+  var dayTabs = $$('[data-daytabs] button');
+  function markDay(i) {
+    dayIdx = i;
+    dayTabs.forEach(function (t, k) { t.classList.toggle('is-on', k === i); t.setAttribute('aria-pressed', k === i); });
+    cards.forEach(function (c, k) { c.classList.toggle('is-on', k === i); });
+    $('[data-dayprev]').disabled = i === 0;
+    $('[data-daynext]').disabled = i === cards.length - 1;
+  }
+  function goDay(i, behavior) {
+    var k = Math.max(0, Math.min(cards.length - 1, i));
+    var c = cards[k];
+    days.scrollTo({ left: c.offsetLeft - (days.clientWidth - c.offsetWidth) / 2, behavior: behavior || 'smooth' });
+    markDay(k);
+  }
+  var dayTimer;
+  days.addEventListener('scroll', function () {
+    clearTimeout(dayTimer);
+    dayTimer = setTimeout(function () {
+      var mid = days.scrollLeft + days.clientWidth / 2;
+      var dist = cards.map(function (c) { return Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); });
+      markDay(dist.indexOf(Math.min.apply(null, dist)));
+    }, 90);
+  }, { passive: true });
+  dayTabs.forEach(function (t, i) { t.addEventListener('click', function () { goDay(i); }); });
+  $('[data-dayprev]').addEventListener('click', function () { goDay(dayIdx - 1); });
+  $('[data-daynext]').addEventListener('click', function () { goDay(dayIdx + 1); });
+  // 最初は、当日または次に開催する日のカードを表示
+  var firstDay = Math.max(0, GACHA.findIndex(function (g) { return now() <= g.end; }));
+  goDay(firstDay, 'auto');
+  window.addEventListener('resize', function () { goDay(dayIdx, 'auto'); });
+  window.addEventListener('load', function () { goDay(dayIdx, 'auto'); });
 
   var price = function (a, b) {
     return '<p class="item__p"><span class="num">' + a + '</span>円(税込)<br>クーポン利用で<strong><b>' + b + '</b><em>円</em></strong></p>';
