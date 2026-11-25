@@ -162,3 +162,15 @@ body::before{background:linear-gradient(180deg,var(--out),var(--bg2) 55%,var(--o
 .fv__note{padding:6px 8px;font-size:min(13px,3.05vw);white-space:nowrap}
 .state[hidden]{display:none}
 .day__top{padding-bottom:14px}
+
+/* ---- ガチャの日付(時間の上)とカードの位置を示す点 ---- */
+.gacha__dates{display:flex;justify-content:center;gap:18px;margin-top:10px;font-family:var(--num);font-weight:600;font-size:38px;line-height:1.25;white-space:nowrap}
+.gacha__dates small{font-family:var(--sans);font-weight:700;font-size:.5em;margin-left:1px}
+.gacha__rule{margin-top:4px}
+.dayslide{margin-top:14px}
+.daydots{display:flex;justify-content:center;margin-top:-8px}
+.daydots button{position:relative;width:34px;height:34px;padding:0;border:0;background:none;cursor:pointer}
+.daydots button::after{content:"";position:absolute;left:12px;top:12px;width:10px;height:10px;border-radius:50%;background:#ffffff66}
+.daydots .is-on::after{background:var(--cream)}
+@media (max-width:600px){.gacha__dates{display:grid;grid-template-columns:auto auto;gap:0 26px;font-size:36px;letter-spacing:0}}
+

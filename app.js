@@ -98,7 +98,7 @@
   days.append.apply(days, cloneCards());
   var cards = [].slice.call(days.children), dayPos = DAY_COUNT;
   $('[data-daytabs]').innerHTML = GACHA.map(function (g) {
-    return '<button type="button"><b>' + g.m + '</b>(' + g.w + ')</button>';
+    return '<button type="button" aria-label="' + g.m + '(' + g.w + ')のカード"></button>';
   }).join('');
   var dayTabs = $$('[data-daytabs] button');
   function markDay(pos) {
