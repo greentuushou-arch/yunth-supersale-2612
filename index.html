@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -51,12 +51,10 @@
   </section>
   <p class="fv__note">美白＊・シミ対策＊：メラニンの生成を抑え、しみ・そばかすを防ぐ<br>水光肌：うるおいとツヤのある肌印象のこと</p>
 
-  <!-- 早見表 -->
-  <section class="sec sec--pearl sec--lit" id="calendar" data-title="期間の早見表">
-    <svg class="lights" viewBox="0 0 640 84" aria-hidden="true"><path d="M-10 6Q100 62 214 18T430 20T650 8" fill="none" stroke="#c9a25a" stroke-width="1.5"/><g class="b"><circle cx="28" cy="33" r="13" fill="#e9bf6a" opacity=".22"/><path d="M28 22v6" stroke="#a67f39" stroke-width="2"/><circle cx="28" cy="33" r="5.5" fill="#e9bf6a"/></g><g class="b"><circle cx="78" cy="45" r="13" fill="#e58ba2" opacity=".22"/><path d="M78 34v6" stroke="#a67f39" stroke-width="2"/><circle cx="78" cy="45" r="5.5" fill="#e58ba2"/></g><g class="b"><circle cx="130" cy="45" r="13" fill="#e9bf6a" opacity=".22"/><path d="M130 34v6" stroke="#a67f39" stroke-width="2"/><circle cx="130" cy="45" r="5.5" fill="#e9bf6a"/></g><g class="b"><circle cx="182" cy="37" r="13" fill="#f3c9a0" opacity=".22"/><path d="M182 26v6" stroke="#a67f39" stroke-width="2"/><circle cx="182" cy="37" r="5.5" fill="#f3c9a0"/></g><g class="b"><circle cx="232" cy="24" r="13" fill="#e58ba2" opacity=".22"/><path d="M232 13v6" stroke="#a67f39" stroke-width="2"/><circle cx="232" cy="24" r="5.5" fill="#e58ba2"/></g><g class="b"><circle cx="284" cy="16" r="13" fill="#e9bf6a" opacity=".22"/><path d="M284 5v6" stroke="#a67f39" stroke-width="2"/><circle cx="284" cy="16" r="5.5" fill="#e9bf6a"/></g><g class="b"><circle cx="336" cy="18" r="13" fill="#f3c9a0" opacity=".22"/><path d="M336 7v6" stroke="#a67f39" stroke-width="2"/><circle cx="336" cy="18" r="5.5" fill="#f3c9a0"/></g><g class="b"><circle cx="388" cy="24" r="13" fill="#e9bf6a" opacity=".22"/><path d="M388 13v6" stroke="#a67f39" stroke-width="2"/><circle cx="388" cy="24" r="5.5" fill="#e9bf6a"/></g><g class="b"><circle cx="440" cy="30" r="13" fill="#e58ba2" opacity=".22"/><path d="M440 19v6" stroke="#a67f39" stroke-width="2"/><circle cx="440" cy="30" r="5.5" fill="#e58ba2"/></g><g class="b"><circle cx="492" cy="35" r="13" fill="#e9bf6a" opacity=".22"/><path d="M492 24v6" stroke="#a67f39" stroke-width="2"/><circle cx="492" cy="35" r="5.5" fill="#e9bf6a"/></g><g class="b"><circle cx="544" cy="35" r="13" fill="#f3c9a0" opacity=".22"/><path d="M544 24v6" stroke="#a67f39" stroke-width="2"/><circle cx="544" cy="35" r="5.5" fill="#f3c9a0"/></g><g class="b"><circle cx="596" cy="28" r="13" fill="#e58ba2" opacity=".22"/><path d="M596 17v6" stroke="#a67f39" stroke-width="2"/><circle cx="596" cy="28" r="5.5" fill="#e58ba2"/></g></svg>
-    <h2 class="h2">期間の早見表</h2>
-    <p class="lead">企画を選ぶと詳しい内容に移動します</p>
-    <div class="cal">
+  <!-- カレンダー(スマホは閉じた状態。押すと開く) -->
+  <section class="sec calsec" id="calendar" data-title="カレンダー">
+    <h2 class="calsec__h"><button type="button" data-cal-btn aria-expanded="false" aria-controls="cal"><span>カレンダー</span><i aria-hidden="true"></i></button></h2>
+    <div class="cal" id="cal">
       <div class="cal__days" data-cal-days></div>
       <div data-cal-rows></div>
     </div>
@@ -82,14 +80,14 @@
   </section>
 
   <!-- ガチャ -->
-  <section class="sec gacha" id="gacha" data-title="Yunthガチャ">
+  <section class="sec sec--lit gacha" id="gacha" data-title="Yunthガチャ">
+    <svg class="lights" viewBox="0 0 640 84" aria-hidden="true"><path d="M-10 6Q100 62 214 18T430 20T650 8" fill="none" stroke="#c9a25a" stroke-width="1.5"/><g class="b"><circle cx="28" cy="33" r="13" fill="#e9bf6a" opacity=".22"/><path d="M28 22v6" stroke="#a67f39" stroke-width="2"/><circle cx="28" cy="33" r="5.5" fill="#e9bf6a"/></g><g class="b"><circle cx="78" cy="45" r="13" fill="#e58ba2" opacity=".22"/><path d="M78 34v6" stroke="#a67f39" stroke-width="2"/><circle cx="78" cy="45" r="5.5" fill="#e58ba2"/></g><g class="b"><circle cx="130" cy="45" r="13" fill="#e9bf6a" opacity=".22"/><path d="M130 34v6" stroke="#a67f39" stroke-width="2"/><circle cx="130" cy="45" r="5.5" fill="#e9bf6a"/></g><g class="b"><circle cx="182" cy="37" r="13" fill="#f3c9a0" opacity=".22"/><path d="M182 26v6" stroke="#a67f39" stroke-width="2"/><circle cx="182" cy="37" r="5.5" fill="#f3c9a0"/></g><g class="b"><circle cx="232" cy="24" r="13" fill="#e58ba2" opacity=".22"/><path d="M232 13v6" stroke="#a67f39" stroke-width="2"/><circle cx="232" cy="24" r="5.5" fill="#e58ba2"/></g><g class="b"><circle cx="284" cy="16" r="13" fill="#e9bf6a" opacity=".22"/><path d="M284 5v6" stroke="#a67f39" stroke-width="2"/><circle cx="284" cy="16" r="5.5" fill="#e9bf6a"/></g><g class="b"><circle cx="336" cy="18" r="13" fill="#f3c9a0" opacity=".22"/><path d="M336 7v6" stroke="#a67f39" stroke-width="2"/><circle cx="336" cy="18" r="5.5" fill="#f3c9a0"/></g><g class="b"><circle cx="388" cy="24" r="13" fill="#e9bf6a" opacity=".22"/><path d="M388 13v6" stroke="#a67f39" stroke-width="2"/><circle cx="388" cy="24" r="5.5" fill="#e9bf6a"/></g><g class="b"><circle cx="440" cy="30" r="13" fill="#e58ba2" opacity=".22"/><path d="M440 19v6" stroke="#a67f39" stroke-width="2"/><circle cx="440" cy="30" r="5.5" fill="#e58ba2"/></g><g class="b"><circle cx="492" cy="35" r="13" fill="#e9bf6a" opacity=".22"/><path d="M492 24v6" stroke="#a67f39" stroke-width="2"/><circle cx="492" cy="35" r="5.5" fill="#e9bf6a"/></g><g class="b"><circle cx="544" cy="35" r="13" fill="#f3c9a0" opacity=".22"/><path d="M544 24v6" stroke="#a67f39" stroke-width="2"/><circle cx="544" cy="35" r="5.5" fill="#f3c9a0"/></g><g class="b"><circle cx="596" cy="28" r="13" fill="#e58ba2" opacity=".22"/><path d="M596 17v6" stroke="#a67f39" stroke-width="2"/><circle cx="596" cy="28" r="5.5" fill="#e58ba2"/></g></svg>
     <svg class="gacha__box" viewBox="0 0 150 140" aria-hidden="true" fill="none" stroke="#c9a25a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M22 52l58 12v66l-58-14z" fill="#fff"/><path d="M80 64l48-16v62l-48 20z" fill="#fff6ee"/><path d="M22 52l46-14 60 10-48 16z" fill="#fff"/><path d="M76 46c-10-22-40-34-42-16-1 12 24 16 42 16zM76 46c2-24 34-42 40-24 4 12-22 22-40 24zM76 46c-4 8-10 13-18 16M76 46c8 4 14 7 22 8"/><text x="51" y="111" text-anchor="middle" font-family="Jost,sans-serif" font-weight="600" font-size="44" fill="#c5345f" stroke="none">?</text></svg>
     <h2 class="gacha__ttl">Yunthガチャ</h2>
     <p class="term"><span>12/3<small>(木)</small></span><span>12/4<small>(金)</small></span><span>12/5<small>(土)</small></span><span>12/10<small>(木)</small></span></p>
     <p class="gacha__rule"><b>20</b>時～<b>22</b>時にご注文の方から</p>
     <p class="gacha__500">抽選で<b>500</b>名様限定！</p>
 
-    <p class="gacha__ship">当たったアイテムは<br>ご注文商品の発送時に一緒にお届けします</p>
 
     <div class="gcd" data-gcd><p class="gcd__l"></p><p class="gcd__n"></p></div>
 
@@ -189,13 +187,13 @@
 </main>
 
 <nav class="dock" data-dock aria-label="メニュー">
-  <a href="#calendar">期間の<br>早見表</a>
+  <a href="#calendar">カレンダー</a>
   <a href="#gacha">Yunth<br>ガチャ</a>
   <a href="#serum">美容液<b>20%OFF</b></a>
   <a href="#skin">スキンケア<b>30%OFF</b></a>
   <a href="#boost">Deep<br>Boost</a>
 </nav>
 
-<script src="app.js?v=3"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>

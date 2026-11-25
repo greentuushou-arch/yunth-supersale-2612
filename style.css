@@ -76,7 +76,12 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .fv__note{padding:12px 20px;background:#fffdfa;color:var(--ink2);font-size:14px;line-height:1.65;letter-spacing:.02em;text-align:center;word-break:auto-phrase}
 
 /* ---- 早見表 ---- */
-.cal{margin-top:26px;text-align:left}
+.calsec{background:linear-gradient(165deg,#f7ebcd,#ecd7a8 55%,#f5e6c2);padding:44px 24px 48px}
+.calsec__h{font-size:1em;line-height:1}
+.calsec__h button{display:flex;align-items:center;justify-content:center;gap:16px;width:100%;padding:0;border:0;background:none;color:var(--wine);font:700 38px/1.4 var(--sans);letter-spacing:.12em;cursor:pointer}
+.calsec__h i{display:none}
+.cal{margin-top:20px;padding:20px 22px 22px;background:#fffdf8;border-radius:6px;box-shadow:0 0 0 1px #d9b974;text-align:left}
+.cal__row:last-of-type{border-bottom:0;padding-bottom:0}
 .cal__days,.cal__track{display:grid;grid-template-columns:repeat(10,1fr)}
 .cal__days{position:relative;border-bottom:2px solid var(--hot)}
 .cal__days div{padding:4px 0 6px;text-align:center;line-height:1.15}
@@ -91,8 +96,6 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .cal__row p small{font-family:var(--num);font-weight:500;font-size:16px;letter-spacing:.01em;color:var(--ink2);white-space:nowrap}
 .cal__track{margin-top:7px;height:22px;background:repeating-linear-gradient(90deg,#f5e7de 0 calc(10% - 2px),transparent calc(10% - 2px) 10%)}
 .cal__track i{border-radius:3px;background:var(--c,var(--hot));grid-row:1;margin-right:2px}
-.cal__row--ss{padding-top:10px}
-.cal__row--ss p{font-weight:500}
 
 /* ---- 先行 PDRN ---- */
 .pdrn{background:linear-gradient(180deg,#f7f7f8,#e6e9ed 60%,#f5f5f6)}
@@ -112,7 +115,6 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .gacha__rule b{font-family:var(--num);font-weight:600;font-size:40px;letter-spacing:0;color:var(--hot)}
 .gacha__500{display:flex;align-items:baseline;justify-content:center;margin-top:2px;font-weight:700;font-size:38px;line-height:1.1;white-space:nowrap}
 .gacha__500 b{font-family:var(--num);font-weight:600;font-size:124px;line-height:1;letter-spacing:-.02em;margin:0 .04em;background:linear-gradient(170deg,#dfbc74 4%,#bd8f43 46%,#a1742b 72%,#cfa758);-webkit-background-clip:text;background-clip:text;color:transparent}
-.gacha__ship{margin:22px auto 0;padding:14px 12px;max-width:500px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);font-weight:700;font-size:18px;line-height:1.6;word-break:auto-phrase}
 .gcd{margin-top:22px}
 .gcd__l{font-weight:700;font-size:18px;color:var(--gold-d);letter-spacing:.08em}
 .gcd__n{font-family:var(--num);font-weight:500;font-size:48px;line-height:1.2;white-space:nowrap}
@@ -132,12 +134,10 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .day__lbl{font-weight:700;font-size:17px;letter-spacing:.1em;color:var(--gold-d)}
 .day__prize{margin-top:2px;font-weight:700;font-size:30px;line-height:1.45;letter-spacing:.04em;word-break:auto-phrase}
 .day__prize+.day__lbl{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
-.tgt{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 10px;margin-top:10px}
-.tgt a{width:calc((100% - 30px)/4);text-decoration:none;font-size:15px;line-height:1.4;letter-spacing:0;font-weight:500;word-break:keep-all}
-.tgt--1 a{width:190px;font-size:18px;font-weight:700}
-.th{display:block;aspect-ratio:1;margin-bottom:6px;border-radius:8px;overflow:hidden;background:#fff3f2}
-.th img{width:100%;height:100%;object-fit:contain}
-.th--mask img{clip-path:inset(21.5% 0 0 0);transform:translateY(-10%)}
+.slot{display:grid;place-items:center;aspect-ratio:2/1;margin-top:10px;border-radius:4px;background:#fdf1ef;color:#c9a0a8;font-size:15px}
+.slot__img{width:100%;margin-top:10px}
+.tgt{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin-top:14px}
+.tgt a{font-size:16px;line-height:1.5;letter-spacing:.01em;font-weight:500;white-space:nowrap;text-underline-offset:4px;text-decoration-color:var(--gold)}
 
 /* ---- クーポン券 ---- */
 .ticket{position:relative;max-width:540px;margin:24px auto 0;padding:50px 24px 34px;background:var(--rose-grad);color:#fff;border-radius:6px;
@@ -280,7 +280,7 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .cal__row p{font-size:17px}.cal__row p small{font-size:15px}
   .pdrn__img{margin:22px -18px 0}
   .calc strong b{font-size:56px}
-  .gacha__ttl{font-size:44px}.gacha__box{width:120px}.gacha__ship{font-size:17px}
+  .gacha__ttl{font-size:44px}.gacha__box{width:120px}
   .gacha__rule{font-size:20px}.gacha__rule b{font-size:32px}
   .gacha__500{font-size:23px;letter-spacing:0}.gacha__500 b{font-size:82px}
   #gacha .term{display:grid;grid-template-columns:auto auto;gap:0 24px;font-size:28px}
@@ -288,8 +288,7 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
   .day__d{font-size:54px}.day__t{font-size:27px}
   .day__body{margin:0 16px;padding:18px 0 28px}
   .day__prize{font-size:22px;letter-spacing:.02em}
-  .tgt a{width:calc((100% - 20px)/3);font-size:14px}
-  .tgt--1 a{width:170px;font-size:17px}
+  .tgt{gap:4px 14px}.tgt a{font-size:15px}
   .ticket{padding:42px 12px 28px;--n:11px}
   .ticket__m .cp{font-size:110px}
   .ticket .btn{margin:30px 8px 0;font-size:20px}
@@ -327,4 +326,16 @@ sup{font-size:max(10px,.42em);font-weight:500;vertical-align:super;line-height:0
 .orn--l{left:max(12px,calc(50% - var(--col)/2 - var(--rail) - 25px))}
 .orn--r{right:max(12px,calc(50% - var(--col)/2 - var(--rail) - 25px));transform:scaleX(-1)}
 @media (min-width:1180px) and (min-height:860px){.orn{display:block}.rail{padding-top:140px}}
-@media (max-width:600px){.sec--lit{padding-top:80px}}
+@media (max-width:600px){
+  .sec--lit{padding-top:80px}
+  .calsec{padding:0}
+  .calsec__h button{padding:17px 18px;font-size:22px}
+  .calsec__h i{display:block;position:relative;width:26px;height:26px;border-radius:50%;background:var(--wine)}
+  .calsec__h i::before,.calsec__h i::after{content:"";position:absolute;left:7px;top:12px;width:12px;height:2px;background:#fff;transition:transform .25s}
+  .calsec__h i::after{transform:rotate(90deg)}
+  .calsec.is-open .calsec__h i::after{transform:none}
+  .cal{display:none;margin:0 12px 20px;padding:14px 12px 16px}
+  .calsec.is-open .cal{display:block}
+  .cal__days b{font-size:20px}
+}
+@media (min-width:601px){.calsec__h button{cursor:default;pointer-events:none}}

@@ -23,15 +23,16 @@
     va: ['yb-116-001', 'serum-va.webp', '生VA美容液⁠<sup>＊</sup>'],
     az: ['yb-125-001', 'serum-az.webp', '生AZ美容液'],
     pdrn: ['yb-126-001', 'serum-pdrn.webp', '生PDRN⁠<sup>※2</sup><wbr>美容液'],
-    box: ['yb-127-001', 'https://shop.r10s.jp/yunth/cabinet/renamethum/p15/yb-127-001.jpg', 'ピュアマスク<br>大容量<wbr>ボックス', 'th--mask'],
+    box: ['yb-127-001', '', 'ピュアマスク<br>大容量<wbr>ボックス'],
     mask: ['ys-r129', 'ys-r129.webp', 'ピュアマスク<br>4袋／<wbr>8袋セット'],
     boost: ['yth-260', 'deepboost-sq.webp', '美顔器<br>Deep Boost']
   };
+  // img: 対象商品の切り抜き画像(images/ に置いてファイル名を入れる。横長 1200×600px 目安)
   var GACHA = [
-    { m: '12/3', w: '木', day: '12-03', items: ['vc'], prize: '今治タオル ＆ 乳液ミニ' },
-    { m: '12/4', w: '金', day: '12-04', items: ['vc', 'va', 'az', 'pdrn', 'box', 'mask', 'boost'], prize: 'Yunthオリジナル トートバッグ' },
-    { m: '12/5', w: '土', day: '12-05', items: ['vc', 'va', 'az', 'pdrn', 'box', 'mask', 'boost'], prize: '美容液収納ボックス<br>＆ シュシュ(ピンク)' },
-    { m: '12/10', w: '木', day: '12-10', items: ['vc', 'va', 'az', 'pdrn', 'boost'], prize: 'スクエアシートマスク10枚<br>＆ シュシュ(ベージュ)' }
+    { m: '12/3', w: '木', day: '12-03', img: '', items: ['vc'], prize: '今治タオル ＆ 乳液ミニ' },
+    { m: '12/4', w: '金', day: '12-04', img: '', items: ['vc', 'va', 'az', 'pdrn', 'box', 'mask', 'boost'], prize: 'Yunthオリジナル トートバッグ' },
+    { m: '12/5', w: '土', day: '12-05', img: '', items: ['vc', 'va', 'az', 'pdrn', 'box', 'mask', 'boost'], prize: '美容液収納ボックス<br>＆ シュシュ(ピンク)' },
+    { m: '12/10', w: '木', day: '12-10', img: '', items: ['vc', 'va', 'az', 'pdrn', 'boost'], prize: 'スクエアシートマスク10枚<br>＆ シュシュ(ベージュ)' }
   ].map(function (g) {
     return Object.assign({}, g, { start: T(g.day + 'T20:00:00'), end: T(g.day + 'T21:59:59') });
   });
@@ -76,10 +77,10 @@
     var prize = SHOW_PRIZE ? '<p class="day__lbl">当たるアイテム</p><p class="day__prize">' + g.prize + '</p>' : '';
     var items = g.items.map(function (k) {
       var it = G[k];
-      return '<a href="' + url(it[0]) + '" target="_blank" rel="noopener"><span class="th ' + (it[3] || '') + '"><img src="' + src(it[1]) + '" alt="' + plain(it[2]) + '" loading="lazy"></span>' + it[2] + '</a>';
+      return '<a href="' + url(it[0]) + '" target="_blank" rel="noopener">' + it[2].replace(/<br>/g, '') + '</a>';
     }).join('');
     return '<article class="day"><svg class="day__orn" viewBox="0 0 56 70" aria-hidden="true"><path d="M28 0v12" stroke="#c9a25a" stroke-width="1.5"/><rect x="21" y="10" width="14" height="9" rx="2" fill="url(#oG)"/><circle cx="28" cy="43" r="25" fill="url(#' + (i % 2 ? 'oY' : 'oP') + ')"/></svg><div class="day__top"><p class="day__d">' + g.m + '<small>(' + g.w + ')</small></p><p class="day__t">20:00〜22:00</p><p class="state" data-gstate="' + i + '"></p></div>' +
-      '<div class="day__body">' + prize + '<p class="day__lbl">対象商品</p><div class="tgt' + (g.items.length === 1 ? ' tgt--1' : '') + '">' + items + '</div></div></article>';
+      '<div class="day__body">' + prize + '<p class="day__lbl">対象商品</p>' + (g.img ? '<img class="slot__img" src="' + src(g.img) + '" alt="対象商品" loading="lazy">' : '<div class="slot">対象商品の画像が入ります</div>') + '<div class="tgt">' + items + '</div></div></article>';
   }).join('');
 
   var price = function (a, b) {
@@ -136,6 +137,15 @@
     var bars = r.b.map(function (b) { return '<i style="--c:' + r.c + ';grid-column:' + (b[0] - 1) + '/' + b[1] + '"></i>'; }).join('');
     return '<a class="cal__row" href="#' + r.to + '"><p><span>' + r.t + '</span><small>' + r.s + '</small></p><div class="cal__track">' + bars + '</div></a>';
   }).join('') + (isPdrnOver ? '' : '<p class="note" style="text-align:center;margin-top:12px">※サーモン抽出物：DNA-Na(整肌)</p>');
+
+  // スマホのカレンダー開閉(メニューから来たときは自動で開く)
+  var calSec = $('#calendar'), calBtn = $('[data-cal-btn]');
+  function setCal(open) {
+    calSec.classList.toggle('is-open', open);
+    calBtn.setAttribute('aria-expanded', open);
+  }
+  calBtn.addEventListener('click', function () { setCal(!calSec.classList.contains('is-open')); });
+  $$('a[href="#calendar"]').forEach(function (a) { a.addEventListener('click', function () { setCal(true); }); });
 
   /* ---- 左メニュー ---- */
   var secs = $$('section[data-title]').filter(function (s) { return !s.hidden; });
