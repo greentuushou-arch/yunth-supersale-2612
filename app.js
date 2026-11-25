@@ -83,24 +83,36 @@
       '<div class="day__body">' + prize + '<p class="day__lbl">対象商品</p>' + (g.img ? '<img class="slot__img" src="' + src(g.img) + '" alt="対象商品" loading="lazy">' : '<div class="slot">対象商品の画像が入ります</div>') + '<div class="tgt">' + items + '</div></div></article>';
   }).join('');
 
-  // 日別カードのスライド
-  var days = $('[data-days]'), cards = [].slice.call(days.children), dayIdx = 0;
+  // 日別カードのスライド(左右に必ず隣のカードが見えるよう、前後に複製を置いてループさせる)
+  var days = $('[data-days]'), DAY_COUNT = GACHA.length;
+  var realCards = [].slice.call(days.children);
+  function cloneCards() {
+    return realCards.map(function (card) {
+      var c = card.cloneNode(true);
+      c.setAttribute('aria-hidden', 'true');
+      [].slice.call(c.querySelectorAll('a')).forEach(function (a) { a.tabIndex = -1; });
+      return c;
+    });
+  }
+  days.prepend.apply(days, cloneCards());
+  days.append.apply(days, cloneCards());
+  var cards = [].slice.call(days.children), dayPos = DAY_COUNT;
   $('[data-daytabs]').innerHTML = GACHA.map(function (g) {
     return '<button type="button"><b>' + g.m + '</b>(' + g.w + ')</button>';
   }).join('');
   var dayTabs = $$('[data-daytabs] button');
-  function markDay(i) {
-    dayIdx = i;
-    dayTabs.forEach(function (t, k) { t.classList.toggle('is-on', k === i); t.setAttribute('aria-pressed', k === i); });
-    cards.forEach(function (c, k) { c.classList.toggle('is-on', k === i); });
-    $('[data-dayprev]').disabled = i === 0;
-    $('[data-daynext]').disabled = i === cards.length - 1;
+  function markDay(pos) {
+    dayPos = pos;
+    dayTabs.forEach(function (t, k) {
+      t.classList.toggle('is-on', k === pos % DAY_COUNT);
+      t.setAttribute('aria-pressed', k === pos % DAY_COUNT);
+    });
+    cards.forEach(function (c, k) { c.classList.toggle('is-on', k === pos); });
   }
-  function goDay(i, behavior) {
-    var k = Math.max(0, Math.min(cards.length - 1, i));
-    var c = cards[k];
+  function goPos(pos, behavior) {
+    var p = Math.max(0, Math.min(cards.length - 1, pos)), c = cards[p];
     days.scrollTo({ left: c.offsetLeft - (days.clientWidth - c.offsetWidth) / 2, behavior: behavior || 'smooth' });
-    markDay(k);
+    markDay(p);
   }
   var dayTimer;
   days.addEventListener('scroll', function () {
@@ -108,17 +120,22 @@
     dayTimer = setTimeout(function () {
       var mid = days.scrollLeft + days.clientWidth / 2;
       var dist = cards.map(function (c) { return Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); });
-      markDay(dist.indexOf(Math.min.apply(null, dist)));
-    }, 90);
+      var pos = dist.indexOf(Math.min.apply(null, dist));
+      var isClone = pos < DAY_COUNT || pos >= DAY_COUNT * 2;
+      if (isClone) goPos(DAY_COUNT + pos % DAY_COUNT, 'instant');
+      else markDay(pos);
+    }, 130);
   }, { passive: true });
-  dayTabs.forEach(function (t, i) { t.addEventListener('click', function () { goDay(i); }); });
-  $('[data-dayprev]').addEventListener('click', function () { goDay(dayIdx - 1); });
-  $('[data-daynext]').addEventListener('click', function () { goDay(dayIdx + 1); });
-  // 最初は、当日または次に開催する日のカードを表示
+  dayTabs.forEach(function (t, i) { t.addEventListener('click', function () { goPos(DAY_COUNT + i); }); });
+  $('[data-dayprev]').addEventListener('click', function () { goPos(dayPos - 1); });
+  $('[data-daynext]').addEventListener('click', function () { goPos(dayPos + 1); });
+  // 最初は、当日または次に開催する日のカードを中央に表示
   var firstDay = Math.max(0, GACHA.findIndex(function (g) { return now() <= g.end; }));
-  goDay(firstDay, 'auto');
-  window.addEventListener('resize', function () { goDay(dayIdx, 'auto'); });
-  window.addEventListener('load', function () { goDay(dayIdx, 'auto'); });
+  function recenter() { goPos(dayPos, 'instant'); }
+  goPos(DAY_COUNT + firstDay, 'instant');
+  window.addEventListener('resize', recenter);
+  window.addEventListener('load', recenter);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(recenter);
 
   var price = function (a, b) {
     return '<p class="item__p"><span class="num">' + a + '</span>円(税込)<br>クーポン利用で<strong><b>' + b + '</b><em>円</em></strong></p>';

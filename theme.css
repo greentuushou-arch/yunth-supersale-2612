@@ -154,5 +154,6 @@ body::before{background:linear-gradient(180deg,var(--out),var(--bg2) 55%,var(--o
 .snow--fv{position:absolute;left:0;top:0;z-index:1;width:100%;height:75%}
 .fv__p{z-index:2}
 .main{z-index:1}
+.dock a{padding-left:0;padding-right:0;white-space:nowrap}
 @media (min-width:1220px){.snow--bg{display:block}}
 @media (prefers-reduced-motion:reduce){.snow{display:none!important}}
