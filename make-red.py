@@ -3,7 +3,7 @@ from pathlib import Path
 
 here = Path(__file__).parent
 html = (here / 'index.html').read_text(encoding='utf8')
-for before, after in [('data-theme="pink"', 'data-theme="red"'), ('images/fv-pink.webp', 'images/fv-red.webp')]:
+for before, after in [('data-theme="pink"', 'data-theme="red"'), ('images/fv-pink.webp?v=2', 'images/fv-red.webp?v=3')]:
     assert before in html, before
     html = html.replace(before, after)
 (here / 'red.html').write_text(html, encoding='utf8', newline='\n')
