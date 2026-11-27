@@ -1,10 +1,10 @@
-# index.html(ピンク版)から red.html(赤版)を作る。index.html を直したら実行する
+# 赤版で確定(2026-11-26)。index.html が本体。
+# 以前に共有した red.html のURLでも見られるよう、index.html をそのまま red.html にコピーする。
+# index.html を直したら実行する。
 from pathlib import Path
 
 here = Path(__file__).parent
 html = (here / 'index.html').read_text(encoding='utf8')
-for before, after in [('data-theme="pink"', 'data-theme="red"'), ('images/fv-pink.webp?v=2', 'images/fv-red.webp?v=3')]:
-    assert before in html, before
-    html = html.replace(before, after)
+assert 'data-theme="red"' in html, 'index.html が赤版になっていません'
 (here / 'red.html').write_text(html, encoding='utf8', newline='\n')
-print('red.html を作成しました')
+print('red.html を更新しました')
